@@ -1,5 +1,20 @@
 # Changelog — seo-optimization (public)
 
+## 1.1.0 — 2026-07-05
+
+Plugin packaging and documentation release. No skill-content changes from 1.0.0.
+
+- Installable as a Claude Code plugin: `.claude-plugin/plugin.json` (repo root = plugin root,
+  `skills/` auto-discovered) plus `.claude-plugin/marketplace.json`, so
+  `claude plugin marketplace add TheMizeGuy/seo-optimization-public` followed by
+  `claude plugin install seo-optimization@seo-optimization` just works. The clone-and-symlink
+  install remains supported (use one method, not both).
+- New `USAGE.md`: full use guide — trigger behavior, the engagement spine, three worked
+  walkthroughs (deployed-site audit, non-branded demand capture, traffic-drop triage),
+  everyday small asks, troubleshooting, update instructions.
+- README rewritten around the plugin install path with a quickstart prompt list.
+- GitHub Releases now accompany every version tag.
+
 ## 1.0.0 — 2026-07-05
 
 Initial public release. Snapshot of the private skill after four hardening passes on this date:

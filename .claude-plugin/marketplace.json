@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "seo-optimization",
+  "description": "Site-agnostic SEO playbook skill for Claude Code — natural ranking, real authority, zero over-optimization.",
+  "owner": {
+    "name": "TheMizeGuy"
+  },
+  "plugins": [
+    {
+      "name": "seo-optimization",
+      "source": "./",
+      "version": "1.1.0",
+      "description": "SEO playbook skill: naturalness gate, ranking-weight workflow, non-branded demand capture, GSC runbooks, evidence-graded AI search/GEO doctrine (July 2026), over-optimization anti-pattern catalog.",
+      "category": "seo",
+      "homepage": "https://github.com/TheMizeGuy/seo-optimization-public",
+      "keywords": ["seo", "google", "rankings", "keyword-research", "structured-data", "ai-search", "geo", "technical-seo"]
+    }
+  ]
+}
