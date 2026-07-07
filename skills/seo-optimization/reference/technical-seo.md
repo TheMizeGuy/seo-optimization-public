@@ -8,8 +8,7 @@ Crawl budget = crawl rate limit (max requests/sec your server tolerates) x crawl
 
 | When crawl budget matters | When it doesn't |
 |---|---|
-| Sites near Google's advanced-guide thresholds: ~1M unique pages changing weekly, ~10K pages changing daily, or many important URLs stuck "Discovered — currently not indexed" | Small and medium sites — crawl budget is rarely the constraint; quality, linking, canonicals, and server errors usually matter more |
-| Google's official threshold: 1M+ pages updating weekly OR 10K+ pages changing daily | |
+| Sites at Google's official thresholds — 1M+ unique pages updating weekly OR 10K+ pages changing daily — or many important URLs stuck "Discovered — currently not indexed" | Small and medium sites — crawl budget is rarely the constraint; quality, linking, canonicals, and server errors usually matter more |
 
 Crawl capacity factors: site speed (faster = higher limits), 5xx errors (reduce crawling), hostload backoff. Crawl demand factors: popularity, staleness (frequently-changing pages recrawled faster), site events (migrations spike demand), duplicate content (wastes budget).
 
@@ -81,7 +80,7 @@ effect on Google regardless of what it signals to other crawlers.
 | Segmentation | One sitemap per content type (products, blog, categories) — isolates diagnostics |
 | `<lastmod>` | Only when content actually changed; never auto-update timestamps |
 | Generation | Dynamic preferred — auto-excludes 404s, redirects, noindexed pages |
-| Image/video sitemaps | For media-heavy sites; Google Images drives 22.6% of web traffic |
+| Image/video sitemaps | For media-heavy sites and visual-intent niches (image-search reach data: on-page-and-content.md § Image Optimization) |
 | Submission | GSC > Sitemaps |
 
 Sitemap inclusion is a **weak canonical signal** — Google defaults to sitemap URLs as canonical only when no strong signals (301, `rel="canonical"`) exist.
@@ -97,7 +96,7 @@ diagnosis in measurement-and-audit.md.
 
 `<link rel="canonical" href="https://www.example.com/preferred-page/" />`
 
-Use for: www/non-www, HTTP->HTTPS, trailing-slash variants, URL parameters, syndicated content (point to original), AMP->canonical HTML. **Self-referential canonicals are best practice even without duplicates** (adoption 67%+ of sites in 2025, up from 65% in 2024).
+Use for: www/non-www, HTTP->HTTPS, trailing-slash variants, URL parameters, syndicated content (point to original), AMP->canonical HTML. **Self-referential canonicals are best practice even without duplicates.**
 
 | Canonical error | Impact |
 |---|---|
@@ -117,11 +116,11 @@ Signal strength (priority order): `rel="canonical"` and 301 (strong directives) 
 
 | Bloat source | Fix |
 |---|---|
-| Faceted navigation URLs | robots.txt block + canonical to base category |
+| Faceted navigation URLs | Low-value facet combinations: robots.txt block (accept that stray URLs may still index title-only from external links); facets you keep crawlable: canonical to base category. Never both on one URL — a canonical on a robots-blocked page is never seen (see Key distinction above) |
 | Paginated archives | canonical to page 1 or view-all |
 | URL parameters (sort/filter/session) | canonical |
 | Thin tag/author archives | noindex or consolidate |
-| Internal search results | robots.txt block + noindex |
+| Internal search results | noindex (crawlable) is the de-indexing mechanism; robots.txt block is the crawl-budget mechanism for paths never indexed. To remove already-indexed search URLs: noindex first, add the robots block only after they drop out — a robots-blocked noindex is never seen |
 | Staging/dev environments | Password-protect or noindex + robots.txt — **classic trap: noindex left on after staging goes live; check first on any "site vanished" report** |
 
 ### GSC Page Indexing statuses
@@ -150,7 +149,7 @@ Signal strength (priority order): `rel="canonical"` and 301 (strong directives) 
 | 410 | — | **Faster removal** | Content deliberately, permanently removed |
 | 451 | — | Removed | Legal takedowns |
 | 500 | — | Reduced crawl rate if persistent | Never intentional |
-| 503 | — | Bots pause, pages stay indexed (if <2 weeks) | Planned maintenance — include `Retry-After` header |
+| 503 | — | Bots pause; safe for short outages (a day or two). Crawl rate drops while it persists; beyond ~a week expect pages to start dropping | Planned maintenance — keep windows minimal + `Retry-After` header |
 
 Soft 404 anti-pattern: 200 OK with "not found" content — always return explicit 404/410. Prefer 410 over 404 for known-removed content.
 

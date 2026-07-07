@@ -52,10 +52,9 @@ and say plainly which claims rest on second-hand or assumed data.
 
 Two probing rules, production-verified:
 
-- **Origin vs edge.** Behind a CDN or bot-protection layer, a blocked/challenged fetch is not
-  evidence about Googlebot. Probe the origin directly (container/SSH curl against localhost) AND
-  through the edge. When they disagree, the edge answer is what Google sees; the origin answer
-  tells you whether the app or the edge config is at fault.
+- **Origin vs edge.** Behind a CDN or bot-protection layer, probe both — when they disagree, the
+  edge answer is what Google sees. Full rule + probe commands: technical-seo.md § Rendered
+  Production Capture (canonical home).
 - **Sample-probe sitemaps.** Fetch 10-30 random `<loc>` URLs and confirm each returns 200, is
   self-canonical, and carries no noindex. Sitemap generators leak 404s and redirects under
   specific parameter scopes that homepage spot-checks never catch.
@@ -69,7 +68,7 @@ Two probing rules, production-verified:
 | Performance | Clicks, impressions, CTR, position by query/page/country/device | Weekly |
 | Coverage / Indexing | Indexed, excluded, error pages | Weekly |
 | Core Web Vitals | Field CWV data from real users (CrUX) | Monthly |
-| Mobile Usability | Mobile rendering issues | Monthly |
+| (retired) Mobile Usability | Removed from GSC Dec 2023 (with the mobile-friendly test tool) — check mobile parity via URL Inspection live test + the CWV report; mobile-parity checklist in specialized.md | — |
 | Links | Internal and external link reports | Monthly |
 | Manual Actions | Penalty notifications | Immediately on receipt |
 | Security Issues | Malware, hacked content alerts | Immediately on receipt |
@@ -81,8 +80,8 @@ Two probing rules, production-verified:
 
 | Feature | Value |
 |---------|-------|
-| Branded vs Non-Branded filter | Isolate brand searches from organic discovery; most impactful GSC update in years |
-| Custom chart annotations | Annotate key dates (algorithm updates, launches) on performance timeline |
+| Branded vs Non-Branded filter | Isolate brand searches from organic discovery (Apr 2026 internal baseline — unverified against the July 2026 GSC research; confirm it exists in the property before relying on it). Fallback that always works: regex filter on brand-term variants (queries matching / not-matching a brand regex) — this also powers keyword-strategy.md's non-branded scoreboard when the native filter is absent |
+| Custom chart annotations | Annotate key dates on the performance timeline (Apr 2026 internal baseline — unverified; pattern-matches GA4's annotations feature, possibly misattributed to GSC. Fallback: keep a dated change log beside the report) |
 | Regex filters | Complex query and page filtering |
 | Data export / API | Automated reporting |
 | Search Generative AI reports (June 2026) | Impressions from AI Overviews/AI Mode — impressions only, limited rollout/subset of owners; no clicks, CTR, queries, or position; see `ai-search-geo.md` |
@@ -169,7 +168,7 @@ Linking GA4 and GSC shows how users found you (GSC) and what they did after clic
 | Share of voice | Your visibility vs competitors for target keywords | Competitive metric |
 | Indexed pages | Pages in Google's index | Should match intended pages |
 
-### CTR Benchmarks by Position (2025)
+### CTR Benchmarks by Position (2025; blended industry averages, Backlinko-lineage — trackers diverge >10pts at position 1, e.g. First Page Sage puts it ~40%; use for relative expectations, pre-AIO-adjustment)
 
 | Position | Average CTR |
 |----------|-------------|
@@ -442,7 +441,7 @@ you already shipped past.
 
 - Operates at **site level**, not page level — too much unhelpful content drags the entire site down.
 - Uses behavioral signals: bounce rate, dwell time, return visits.
-- Recovery requires sustained quality improvement, not one-off fixes; timeline 6-18 months for sites classified "mostly unhelpful".
+- Recovery requires sustained quality improvement, not one-off fixes; timeline 6-18 months for sites classified "mostly unhelpful" (within the general 6–24-month algorithmic-recovery window, SKILL.md).
 - Pages updated at least once per year gain an average of 4.6 positions vs stale pages (First Page Sage, Q1 2025 dataset).
 
 ## Quick Wins vs Long-Term Investments

@@ -271,8 +271,8 @@ This section carries only the AI-specific layer below.
 
 ### AI entity recognition tactics (content-level)
 
-- Use entity names consistently (don't alternate "JS" / "JavaScript" / "ECMAScript" randomly); define entities on first mention.
-- Build entity co-occurrence — mention related entities together naturally; maintain identical entity info cross-platform.
+The tactic table (naming consistency, first-mention definitions, co-occurrence, cross-platform consistency) lives in `authority-and-offpage.md` § Optimizing for AI entity recognition. The two AI-specific caveats to carry into any use of it:
+
 - Schema's role per Google's May 2026 doctrine: disambiguation and rich-results aid — **not** an AI-citation ranking factor. Do not sell schema as a GEO lever.
 - "Author entity verification" / knowledge-graph-traversal mechanics circulating in 2026 SEO writing: not Google-confirmed; directionally plausible practitioner inference only.
 

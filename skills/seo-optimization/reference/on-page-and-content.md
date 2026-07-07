@@ -8,7 +8,7 @@ Actionable core for on-page optimization, E-E-A-T, topical authority, and conten
 - Over-optimization is penalized harder than under-optimization. Keyword stuffing, exact-match anchor saturation, boilerplate titles, and coverage-inventory writing all read as manipulation.
 - Entities and keywords appear where a reader needs them — title, H1, first 100 words, headings that genuinely describe sections — never as a checklist of terms to inject.
 - When in doubt, leave it out.
-- Text relevance (query-to-content match) has the strongest ranking correlation at 0.47 — beating domain authority, backlinks, and page speed (2025 data). Matching the query beats decorating the page.
+- Text relevance (query-to-content match) shows the strongest ranking correlation at 0.47 — beating domain authority, backlinks, and page speed (2025 correlation study, internal-benchmark figure; a correlation, not the First Page Sage weight model — both agree the content/query match dominates). Matching the query beats decorating the page.
 
 ## Title Tags
 
@@ -23,7 +23,7 @@ Actionable core for on-page optimization, E-E-A-T, topical authority, and conten
 | CTR triggers | Concrete differentiators, tested counts, dates, or scope statements that are true |
 | Avoid | Keyword stuffing, ALL CAPS, misleading titles |
 
-Google rewrites ~36% of titles — triggered by too long/short, excessive keywords, content mismatch, boilerplate patterns, or excessive branding. Compelling accurate titles reduce rewrites.
+Google rewrites roughly a third of titles overall — triggered by too long/short, excessive keywords, content mismatch, boilerplate patterns, or excessive branding; keyword-container titles are prime rewrite bait. Compelling accurate titles reduce rewrites.
 
 ## Meta Descriptions
 
@@ -34,7 +34,7 @@ Google rewrites ~36% of titles — triggered by too long/short, excessive keywor
 | Voice | Active voice, clear call-to-action, value proposition |
 | Uniqueness | Unique per page |
 
-Google rewrites ~63% of descriptions — write custom ones anyway. When displayed, custom descriptions lift CTR by 5.8%; Google's auto-pulled text is usually less compelling.
+Google rewrites ~63% of descriptions — write custom ones anyway. Pages with a meta description see ~5.8% higher CTR than pages without one (industry study); Google's auto-pulled text is usually less compelling.
 
 ## Heading Structure
 
@@ -81,13 +81,13 @@ Critical: match content TYPE to the dominant SERP pattern. If Google shows produ
 | Topic clusters | Pillar ↔ cluster bidirectional linking |
 | No orphans | Every indexable page needs ≥1 internal link (~40% of internal link value is wasted on poorly structured sites with orphaned pages) |
 | Placement | Contextual body links > sidebar/footer/nav links (body links pass more equity) |
-| Volume | 2-5 contextual links per 1,000 words; total page links under 150 |
+| Volume | 2-5 contextual links per 1,000 words; very high total link counts (many hundreds) dilute per-link equity and usability — a heuristic, not a Google limit |
 
 A strategic internal link from a high-authority page provides more ranking boost than a low-quality external backlink.
 
-### Anchor text mix
+### Anchor text mix (INTERNAL links)
 
-Diagnostic ranges, not quotas — a natural profile lands here on its own; never engineer anchors toward these numbers (same rule as external anchors, authority-and-offpage.md).
+Diagnostic ranges, not quotas — a natural profile lands here on its own; never engineer anchors toward these numbers (same rule as external anchors, authority-and-offpage.md). External backlink profiles run much stricter: exact match 5-10% max — never lift these internal ranges into a link-building context (ranges in authority-and-offpage.md).
 
 | Type | Example | Share |
 |---|---|---|
@@ -99,7 +99,7 @@ Diagnostic ranges, not quotas — a natural profile lands here on its own; never
 
 ## Image Optimization
 
-Google Images delivers 22.6% of all web traffic — image SEO is not optional for content-heavy sites.
+Google Images accounted for ~22.6% of all US searches (Jumpshot 2019 — dated; no newer public property-share data). Image search delivers far fewer clicks than its search share — treat image SEO as discovery reach for visual-intent niches plus CLS/LCP hygiene, not as a 22% traffic channel.
 
 | Format | Notes |
 |---|---|
@@ -174,7 +174,7 @@ Content quality is the #1 ranking factor at 23% weight (First Page Sage 2025). T
 Categories: health & safety, financial, legal, news/current events, groups of people, major-purchase shopping, government/civics.
 
 - Strictest E-E-A-T scrutiny of any content type. Credentials matter: content written or reviewed by qualified professionals, with clear attribution.
-- December 2025 core update impact: affiliate/review sites 71% affected, health/medical 67%, e-commerce 52%.
+- The December 2025 core update hit affiliate/review and health/medical sites hardest (industry-tracker estimates of share of monitored sites seeing visibility change — internal-benchmark figure, directional only).
 - Per-vertical author-credential requirements (healthcare, finance, legal, real estate, travel): specialized.md, Industry / YMYL Specifics.
 
 ## Topical Authority and Content Clusters

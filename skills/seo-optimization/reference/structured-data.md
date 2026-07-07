@@ -34,7 +34,7 @@ Generate JSON-LD server-side into the raw HTML before it reaches the browser —
 
 | Stack | Approach |
 |---|---|
-| Next.js | `<Script type="application/ld+json">` in page component or `generateMetadata()` |
+| Next.js (App Router) | Plain `<script type="application/ld+json">` via `dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}` in the page/layout component (server-rendered into initial HTML). NOT `generateMetadata()` (the Metadata API has no JSON-LD field) and not `next/script` (that component is for loading external scripts) |
 | WordPress | Yoast SEO, Rank Math, or Schema Pro |
 | Shopify | Built-in product schema; extend via apps or theme code |
 | Custom | Template engine renders JSON-LD from database/API data (also fixes stale prices/availability — dynamic generation from live data source) |
@@ -76,22 +76,27 @@ Generate JSON-LD server-side into the raw HTML before it reaches the browser —
 | Organization + `foundingDate`, `numberOfEmployees` | Establishes authority |
 | MedicalWebPage / FinancialProduct | YMYL-specific trust signals |
 
-## Active Google rich-result eligibility (required properties)
+## Active Google rich-result eligibility (practical minimums)
 
-| Type | Rich result | Minimum requirements |
+Practical minimums for a useful rich result — verify against the current Google feature guide
+before shipping; Google's required/recommended split changes, and several fields below are
+recommended-not-required (omitting them narrows the result, it doesn't always suppress it).
+
+| Type | Rich result | Practical minimum |
 |---|---|---|
-| Article | Author, date, image in SERP | headline, image, author, datePublished |
-| Product | Price, availability, rating stars | name, offers (price, availability) |
-| Recipe | Cook time, calories, rating | name, image, recipeIngredient |
+| Article | Author, date, image in SERP | headline, image, author, datePublished (all *recommended* per Google — no hard-required fields; a bare Article still qualifies but renders thin) |
+| Product | Price, availability, rating stars | name + at least one of offers / review / aggregateRating (offers needs price + availability for the shopping treatment) |
+| Recipe | Cook time, calories, rating | name, image (required); recipeIngredient/times strongly recommended for the full card |
 | Event | Date, location, ticket info | name, startDate, location |
 | Video | Video thumbnail | name, description, thumbnailUrl, uploadDate |
 | LocalBusiness | Business info in local results | name, address, telephone |
 | BreadcrumbList | Breadcrumb trail | itemListElement with position, name |
 | Review | Star ratings | reviewRating, author |
 
-Missing required properties = schema silently ignored. Always check schema.org for vocabulary and
-Google Search Central's feature docs for Google Search behavior; schema.org validity alone does
-not mean Google shows a rich result.
+Missing genuinely-required properties = feature ineligible (Rich Results Test flags them as
+errors; missing recommended fields appear as warnings). Always check schema.org for vocabulary
+and Google Search Central's feature docs for Google Search behavior; schema.org validity alone
+does not mean Google shows a rich result.
 
 ### Situational Google feature guides — load only when the page qualifies
 
@@ -281,7 +286,7 @@ Flag the most citable passage for voice assistants / AI synthesis via `speakable
 
 - [ ] Every page: Organization + WebSite + WebPage + BreadcrumbList minimum
 - [ ] Content pages add Article/Product/LocalBusiness as appropriate
-- [ ] All entities use @id for cross-page and cross-block references
+- [ ] All entities use @id for cross-block references; keep @id values consistent across pages (aids entity corroboration — Google only confirms same-page resolution)
 - [ ] Organization has sameAs to all verified profiles + Wikidata
 - [ ] Authors defined as Person entities with credentials and sameAs
 - [ ] mainEntityOfPage links content entities to their pages
@@ -318,7 +323,7 @@ PAA reveals underserved intent, content gaps, long-tail ideas, and user-journey 
 
 ## Google Discover
 
-Interest-based, not query-based — no keyword targeting. Mobile audience (Google app, Chrome mobile). Traffic pattern: sharp spikes fading within 48-72 hours. AI summaries covered 51% of the feed as of Nov 2025. February 2026 Discover core update: original content weighted more heavily (summarization-only deprioritized), larger E-E-A-T role, more locally relevant content, clickbait reduction.
+Interest-based, not query-based — no keyword targeting. Mobile audience (Google app, Chrome mobile). Traffic pattern: sharp spikes fading within 48-72 hours. AI summaries covered 51% of the feed as of Nov 2025 (industry estimate). Early-2026 Discover shifts observed by publishers (industry reporting; Google ships no Discover-branded "core updates" — core updates affect Discover): original content weighted more heavily (summarization-only deprioritized), larger E-E-A-T role, more locally relevant content, clickbait reduction.
 
 Eligibility/optimization checklist:
 

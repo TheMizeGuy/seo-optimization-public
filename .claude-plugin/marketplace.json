@@ -9,7 +9,7 @@
     {
       "name": "seo-optimization",
       "source": "./",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "description": "SEO playbook skill: naturalness gate, ranking-weight workflow, non-branded demand capture, GSC runbooks, evidence-graded AI search/GEO doctrine (July 2026), over-optimization anti-pattern catalog.",
       "category": "seo",
       "homepage": "https://github.com/TheMizeGuy/seo-optimization-public",

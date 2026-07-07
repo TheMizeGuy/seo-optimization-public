@@ -53,7 +53,7 @@ Respond to negatives within 24 hours; resolve offline; never argue.
 
 ### Mobile-first (applies to 100% of websites)
 
-Google indexes the **mobile version**. Mobile search share: 58% of Google searches (2025). 53% of mobile users leave if load >3s.
+Google indexes the **mobile version**. Mobile is the majority of Google searches (~60-65% per 2025 trackers — directional). 53% of mobile users leave if load >3s.
 
 Parity checklist (mobile must equal desktop):
 - [ ] Identical text content (nothing hidden on mobile)
@@ -97,7 +97,7 @@ Methods: HTML `<link>` tags (<100 combos), XML sitemap annotations (large sites)
 |---|---|
 | Missing self-reference | Google may ignore ALL hreflang on that page |
 | Non-symmetric annotations | Broken language targeting |
-| Wrong codes (classic example: "uk" used for Ukrainian — should be "ua") | Wrong-audience targeting |
+| Wrong codes ("en-uk" for the UK — the region must be ISO 3166-1: "en-gb"; note "uk" alone IS valid and means the Ukrainian language, while "ua" is not a language code at all) | Annotation ignored or wrong-audience targeting |
 | Pointing at non-200 pages | Annotation ignored |
 | Missing x-default | No fallback for unmatched users |
 | Hreflang on non-canonical URLs | Conflicts with canonical signals |
@@ -118,7 +118,7 @@ Localization: transcreate, don't translate — local keyword research per market
 
 ### Image
 
-Google Images delivers **22.6% of all web traffic** (internal benchmark) — not optional.
+Google Images accounted for ~22.6% of all US **searches** (Jumpshot 2019 — dated; image-search CTR is far lower than web, so it is nowhere near that share of delivered traffic). Image SEO is cheap hygiene with real upside for visual-intent niches; full framing in on-page-and-content.md § Image Optimization.
 
 | Format | vs JPEG | Support (2025) | Use |
 |---|---|---|---|
@@ -348,7 +348,7 @@ Delay promos until scroll or 30+ seconds; exit-intent is generally acceptable; p
 |---|---|
 | Partner adds `noindex` on the copy | Safest (Google recommended) |
 | Partner adds cross-domain canonical to your original | Good |
-| No attribution | Dangerous — you lose 40% potential traffic within first week (internal benchmark) |
+| No attribution | Dangerous — the higher-authority copy can index first and be treated as the original |
 
 Rules: publish on your site FIRST, submit to GSC URL Inspection immediately, wait 24-48h for indexing before syndicating, cap at 2-3 partners. Higher-authority partners can get indexed first and be treated as the original.
 

@@ -16,7 +16,7 @@ leaves the entire winnable middle on the table:
 | Brand/entity authority | The ceiling: which difficulty tier of queries you can win at all | 6-12+ months, partly outside your hands |
 | Query coverage (this file) | How much of the demand UNDER that ceiling you actually capture | Weeks to months, fully in your hands |
 
-70% of search traffic is long-tail. A site with modest authority that systematically owns its
+Most search demand is long-tail. A site with modest authority that systematically owns its
 function queries at KD 0-29 outperforms a site waiting for authority before targeting anything.
 Work both lanes: authority building per authority-and-offpage.md, demand capture per this file,
 reported separately (branded growth measures marketing; non-branded growth measures SEO
@@ -97,7 +97,7 @@ rank top 10 within 6 months** (internal-benchmark figure).
 ### Clustering and volume
 
 - SERP-overlap clustering: **3+ shared ranking URLs between two keywords = same cluster** (one page targets both)
-- **70% of all search traffic comes from long-tail keywords** — don't chase only head terms
+- **~70% of search traffic is long-tail** (industry figure, directional — tools under-measure the tail, which is the operative point) — don't chase only head terms
 - Volume accuracy: Keyword Planner gives ranges and groups similar terms; Semrush/Ahrefs clickstream-derived at ±20-30%; **GSC actual data is most accurate for queries you already rank for**; Trends is relative-only (seasonality)
 
 ### Per-keyword SERP analysis checklist

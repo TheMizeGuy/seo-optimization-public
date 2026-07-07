@@ -7,7 +7,7 @@ Purpose: how to evaluate, build, and defend real domain authority — links, bra
 - Authority is domain-level. `siteAuthority` is a domain-level feature, confirmed by the 2024 Google API documentation leak. Individual pages inherit the domain's standing; a great page on a weak domain still competes from behind.
 - Authority is earned, never manufactured. No paid links, no PBNs, no link exchanges — a link penalty on a small site is unrecoverable in practice.
 - Link-quality mismatches actively demote (API leak): links that don't fit the site's real profile (topic, tier, traffic) aren't merely ignored — they can hurt.
-- Brand mentions count even when unlinked. Google attributes unlinked brand mentions as trust signals.
+- Brand mentions matter even when unlinked — strongly evidenced for AI-search visibility (the Ahrefs 75K-brand correlations, ai-search-geo.md §4); for classic ranking it is practitioner inference, never Google-confirmed. Treat unlinked mentions as an AI-visibility and brand-demand lever, not a confirmed classic ranking signal.
 - Weighting: backlinks = 13% of ranking weight (First Page Sage 2025, down from 15% in 2024). Quality over quantity is the dominant trend; brand signals and entity recognition are increasingly important for AI search visibility.
 
 **Honesty framing for diagnosis:** when a site asks "why aren't we page 1," the majority of the gap is usually off-site — domain authority, entity recognition, brand presence — not a missing on-page tweak. Say so plainly; do not sell title-tag changes as the fix for an authority deficit. AI systems use entity confidence as a pre-filter before evaluating content at all: no entity recognition = no citations. The same honesty cuts the other way: authority explains head-term losses, not the absence of a non-branded plan — the mid/long-tail function queries in keyword-strategy.md stay winnable at current authority and are worked in parallel, never deferred until "authority is fixed."
@@ -140,7 +140,7 @@ Brand mentions without links are valued as trust signals. Working the channel:
 2. Contact authors to request a link when mentioned without one
 3. Respond to mentions to build relationships for future linked coverage
 
-Top AI source sites (ChatGPT citation analysis): Wikipedia (highest), Forbes (very high), NerdWallet, Bankrate, TechRadar, Tom's Guide, CNBC (all high). Pattern: authoritative, well-known brands with strong entity recognition get cited most by AI systems.
+Top AI source sites (internal-benchmark, 2025-era ChatGPT citation analyses — cross-check ai-search-geo.md §4 concentration data before quoting): Wikipedia (highest), Forbes (very high), NerdWallet, Bankrate, TechRadar, Tom's Guide, CNBC (all high). Pattern: authoritative, well-known brands with strong entity recognition get cited most by AI systems.
 
 ### Brand-SERP audit (cheapest high-trust win)
 
@@ -217,7 +217,7 @@ If no panel exists, build signals until Google is confident:
 | Use entity names consistently | Don't switch between "JS", "JavaScript", "ECMAScript" randomly |
 | Define entities on first mention | "Next.js, a React framework by Vercel, enables..." |
 | Link to entity sources | Wikipedia, official docs, authoritative references |
-| Use structured data | Machine-readable entity declarations |
+| Use structured data | Machine-readable entity declarations — disambiguation only, NOT an AI-citation ranking factor (official, May 2026; ai-search-geo.md §5) |
 | Build entity co-occurrence | Mention related entities together naturally |
 | Cross-platform consistency | Same entity info everywhere |
 
@@ -251,7 +251,7 @@ Cadence: monthly ranking-change review; quarterly full keyword + backlink gap re
 
 ## Reddit and Community Presence
 
-Reddit's standing (internal-benchmark figures): #2 Google visibility (after Wikipedia); 108M daily actives; 1B monthly visits; present in 97% of search queries; $60M/year Google licensing deal for content/AI training. Google's August 2024 "hidden gems" update prioritized authentic community content; engagement signals (upvotes, comments) act as quality proxies.
+Reddit's standing (internal-benchmark figures): #2 Google visibility (after Wikipedia); 108M daily actives; 1B monthly visits; near-universal first-page presence on product-review/experience-type queries (do not quote the "97% of all searches" version circulating in mills — no such measurement exists); $60M/year Google licensing deal for content/AI training. Google's "hidden gems" ranking system (confirmed live with the November 2023 core update) prioritized authentic community content; engagement signals (upvotes, comments) act as quality proxies.
 
 | Do | Don't |
 |----|-------|
@@ -279,7 +279,7 @@ Template requirements: dynamic content (images, FAQs, CTAs, reviews vary per pag
 
 Risk mitigation: Scaled Content Abuse policy → genuine per-page value + human review of samples; thin-content classification → minimum 300 words of unique useful content per page; index bloat → monitor GSC coverage, noindex underperformers; crawl budget → sitemap only high-value pages; negative user signals → A/B test the template before scaling.
 
-Expected results when done right (internal-benchmark figures): 200-500% organic traffic increase within 6 months; keyword coverage from ~50 to 10,000+ variations; 30-50% higher conversion vs broad blog posts (long-tail intent).
+Expectations: older case-study collections claim multi-fold growth, but those figures are unverified and survivorship-biased — never quote them to an owner (SKILL.md's honest-timeline rule governs: clusters ≈ +40% in 3-6 months). Multi-fold upside is plausible only when the template passes the uniqueness test AND the site is the data's destination; post-May-2026, aggregation-shaped programmatic scale is structurally at risk regardless of polish (ai-search-geo.md §4).
 
 ## SaaS/B2B Specifics
 

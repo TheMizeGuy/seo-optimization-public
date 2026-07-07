@@ -64,7 +64,7 @@ exactly these patterns; the recipes below are the required shape.
 
 | Element | Recipe | The smell that fails the gate |
 |---|---|---|
-| Title tag | ONE primary phrase the way a person says it + one concrete differentiator, brand last, 50-60 chars | Two query phrases joined by "with/&/,": a keyword container. Google rewrites ~36% of these |
+| Title tag | ONE primary phrase the way a person says it + one concrete differentiator, brand last, 50-60 chars | Two query phrases joined by "with/&/,": a keyword container — a prime rewrite trigger (Google rewrites roughly a third of titles overall) |
 | H1 | States what the page delivers, in the page's own voice | Title-tag keyword set restated |
 | Headings | Outline the content from user questions/tasks FIRST, then check which queries it serves | Any heading traceable to a keyword list rather than the outline |
 | Body copy | Answers, evidence, specifics a reader needs; entities appear where they serve the sentence | A 4+ item entity/species/brand list justified as "coverage"; word count added as "depth" |

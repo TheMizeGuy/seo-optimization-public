@@ -1,5 +1,29 @@
 # Changelog — seo-optimization (public)
 
+## 1.2.0 — 2026-07-07
+
+Accuracy release: audited fix wave over every reference file (29 findings; evidence-anchored).
+
+- Index-bloat table corrected: robots.txt + canonical/noindex combos were self-defeating (a
+  robots-blocked URL never shows Google its canonical or noindex); rows now give the correct
+  mechanism and ordering (noindex while crawlable first; robots block only after drop-out).
+- hreflang example corrected: "uk" IS the ISO 639-1 code for Ukrainian; the classic mistake is
+  "en-uk" for the UK (should be "en-gb").
+- Next.js App Router JSON-LD recipe corrected: plain `<script type="application/ld+json">` via
+  `dangerouslySetInnerHTML` — not `generateMetadata()` (no JSON-LD field), not `next/script`.
+- 503 guidance corrected to Google's actual tolerance (days, not "<2 weeks").
+- GSC Mobile Usability report marked retired (Dec 2023) with the live replacement path.
+- GSC branded/non-branded filter and chart-annotations rows labeled unverified, with an
+  always-works brand-regex fallback for the non-branded scoreboard.
+- Miscited statistics corrected or labeled: Google Images "22.6% of web traffic" (actually 2019
+  share of searches), Reddit "97% of search queries", "hidden gems" update date (Nov 2023),
+  programmatic-SEO 200-500% vendor claims, December 2025 core percentages, meta-description CTR
+  figure, mobile search share, syndication "40% in a week".
+- Harmonization: title-rewrite denominator unified, 70% long-tail stated once with label,
+  internal vs external anchor-mix ranges explicitly scoped, entity-tactics deduplicated with the
+  schema-is-not-a-GEO-lever caveat carried everywhere, CTR benchmarks attributed, recovery
+  windows cross-referenced.
+
 ## 1.1.0 — 2026-07-05
 
 Plugin packaging and documentation release. No skill-content changes from 1.0.0.
