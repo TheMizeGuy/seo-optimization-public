@@ -74,6 +74,8 @@ Two probing rules, production-verified:
 | Security Issues | Malware, hacked content alerts | Immediately on receipt |
 | Sitemaps | Sitemap submission and status | After submission |
 | URL Inspection | Per-URL indexing, rendering, schema details | As needed |
+| Generative AI performance (all properties since Aug 31, 2026) | Impressions from AI Overviews / AI Mode / gen-AI Discover — impressions only; no clicks, CTR, queries, or position | Monthly |
+| Platform properties (Jul 2026) | First-party Search/Discover performance for the brand's YouTube, Instagram, TikTok and X accounts — measures the YouTube-mention lever in `ai-search-geo.md` §4 without third-party sampling | Monthly |
 | Enhancements | Schema markup errors and valid items | Weekly |
 
 ### 2025-2026 GSC Features
@@ -84,14 +86,15 @@ Two probing rules, production-verified:
 | Custom chart annotations | Annotate key dates on the performance timeline (Apr 2026 internal baseline — unverified; pattern-matches GA4's annotations feature, possibly misattributed to GSC. Fallback: keep a dated change log beside the report) |
 | Regex filters | Complex query and page filtering |
 | Data export / API | Automated reporting |
-| Search Generative AI reports (June 2026) | Impressions from AI Overviews/AI Mode — impressions only, limited rollout/subset of owners; no clicks, CTR, queries, or position; see `ai-search-geo.md` |
-| Search generative AI control (June 2026) | Include/exclude links and content from Google Search generative AI features without affecting ordinary Search ranking/inclusion; property inheritance applies |
+| Generative AI performance report (announced Jun 2026; all properties worldwide since Aug 31, 2026) | Impressions from AI Overviews/AI Mode/gen-AI Discover — impressions only; no clicks, CTR, queries, or position; see `ai-search-geo.md` |
+| Search generative AI control (all websites worldwide since Aug 31, 2026) | Include/exclude links and content from Google Search generative AI features without affecting ordinary Search ranking/inclusion; property inheritance applies |
 
 ### GSC Limitations
 
 | Limitation | Workaround |
 |------------|------------|
 | 16-month data retention | Export regularly; BigQuery for long-term storage |
+| Two breaks in impression history | (1) `&num=100` removed Sep 8-10, 2025: scraper impressions vanished, so impressions fell and average position improved for most sites with no ranking change. (2) A logging error inflated impressions, CTR and position from May 13, 2025 to Apr 27, 2026; fixed forward-only, never backfilled (Mueller). Any impressions/CTR/position comparison that crosses either date is invalid — compare clicks, or compare only windows on the same side of both breaks |
 | Sampled data for high-volume sites | Use API for more precise data |
 | ~48-hour data delay | Not real-time; use analytics for immediate data |
 | No revenue/conversion data | Integrate with GA4 |
@@ -109,6 +112,8 @@ intended.
 | Page Indexing bucket counts (Crawled — not indexed, Soft 404, Duplicate…) | Lag Google's re-crawl by days to weeks | Verify current production behavior with a Googlebot-UA fetch before implementing anything |
 | URL Inspection fields (`referring_urls`, `google_canonical`, `coverage_state`) | Per-field snapshots from that URL's last crawl — observed 2–29 days stale; a stale `referring_urls` manufactures phantom sitemap bugs | Read `last_crawl` first; anything older than the relevant deploy is lag, not defect |
 | Sitemaps API "indexed" numbers | The per-sitemap indexed field is deprecated (always 0); tools surfacing an `indexed_urls` count are showing the SUBMITTED count | The true Indexed count is GSC-UI-only. API-reachable recovery proxies: 28-day clicks/impressions/position trends + flagship-URL inspection pass rate |
+| "Duplicate, Google chose different canonical" within two weeks of a content fix | Google's canonical re-evaluation takes up to two weeks after the fix (canonicalization doc, Jul 10, 2026) | Inside the window it is ALREADY-FIXED lag; re-check after two weeks before touching anything |
+| hreflang language variants reported "not indexed" | Alternates are never indexed in their own right; after canonicalization they are alternate names served when the query deserves them (Illyes, Aug 2026) | INTENDED, not a defect — confirm the canonical variant is indexed and the hreflang set is reciprocal |
 
 Classify every GSC-sourced finding before acting:
 
@@ -168,7 +173,7 @@ Linking GA4 and GSC shows how users found you (GSC) and what they did after clic
 | Share of voice | Your visibility vs competitors for target keywords | Competitive metric |
 | Indexed pages | Pages in Google's index | Should match intended pages |
 
-### CTR Benchmarks by Position (2025; blended industry averages, Backlinko-lineage — trackers diverge >10pts at position 1, e.g. First Page Sage puts it ~40%; use for relative expectations, pre-AIO-adjustment)
+### CTR Benchmarks by Position (2025; blended industry averages, Backlinko-lineage — trackers diverge >10pts at position 1, e.g. First Page Sage puts it ~40%; use for relative expectations, pre-AIO-adjustment; benchmarks computed before Sep 2025 used impression counts inflated by `num=100` scraping, so post-removal CTRs run higher for the same clicks — recalibrate against the site's own post-Sep-2025 data)
 
 | Position | Average CTR |
 |----------|-------------|
@@ -281,7 +286,7 @@ Full audit of a DEPLOYED site = 3 parallel read-only research agents that triang
 2. **In-repo technical audit** — file:line evidence on every head-tag emission, JSON-LD, sitemap entry, robots section, internal-link source, content depth, bucketed FIX-now / FIX-later / DEFER / NOT-FIXABLE.
 3. **Deployed crawlability audit** — fetch rendered HTML for ~30 representative URLs with a Googlebot UA (plus any bot-bypass header the site requires), capture title/desc/canonical/robots/JSON-LD/H1/response headers, probe for UA divergence (cloaking risk).
 
-Execution mode: each of the three agents inherits the session model — always the strongest available Claude. If the session model is already the strongest tier and the site is small enough to reason about directly, run the three lenses inline in the main context rather than dispatching separate agents; never block on, or call out to, a model that isn't the session model. Whether dispatched or run inline, all three lenses stay read-only.
+Execution mode: dispatch the three lenses as read-only subagents on whatever model the session chooses; this skill pins no model. If the site is small enough to reason about directly, run the three lenses inline in the main context rather than dispatching separate agents; never block on a specific model. Whether dispatched or run inline, all three lenses stay read-only.
 
 Acceptance criteria — check each lens's result against these before synthesizing; a lens that misses its criteria gets one re-dispatch with the gap named, never a silent pass:
 
@@ -399,7 +404,7 @@ causes stack — a core update and a technical regression can land the same week
 | 3. Update timing | Drop date vs Search Status Dashboard rollouts. Inside a rollout: no panic edits; wait at least a full week after completion before comparing data | Algorithmic reassessment → framework below |
 | 4. Technical regression | Diff recent deploys against the classic traps (technical-seo.md): shipped noindex/robots block, canonical regression, 5xx spikes, lost redirects, sitemap breakage. Rendered-capture the top losing URLs with a Googlebot UA | Self-inflicted technical |
 | 5. SERP-shape shift | Stable positions but fewer clicks? Check whether AI Overviews arrived on your money queries, a feature you owned (snippet, image pack) vanished, or ads/shopping units expanded. Segment GSC by query and compare CTR at constant position | SERP layout change, not ranking loss |
-| 6. Seasonality / demand | Year-over-year same-period comparison (GSC holds 16 months; Trends for the topic). A drop that recurs annually is demand, not ranking | Seasonal demand |
+| 6. Seasonality / demand | Year-over-year same-period comparison (GSC holds 16 months; Trends for the topic). Compare clicks, not impressions/CTR/position, while the window crosses the Sep 2025 `num=100` removal or the May 2025-Apr 2026 logging error (GSC Limitations). A drop that recurs annually is demand, not ranking | Seasonal demand |
 | 7. Competition / decay | Position slippage on stable queries → run decay + cannibalization detection (on-page-and-content.md); re-fetch the current SERP winners and diff what they added | Content/competitive erosion |
 
 Segment every comparison three ways before concluding: by page template, by query class (branded
@@ -419,7 +424,7 @@ you already shipped past.
 
 ### After Rollout Completes
 
-1. Wait for rollout completion (check Google Search Status Dashboard).
+1. Wait for rollout completion (check Google Search Status Dashboard). Confirmed 2026 entries as of Sep 22: Feb 5-27 Discover core, Mar 24-25 spam, Mar 27-Apr 8 core, May 21-Jun 2 core, Jun 24-26 spam, Aug 18-20 spam. No core update since Jun 2 despite continuous unconfirmed tracker volatility — an unconfirmed spike is not a rollout.
 2. Document impact: compare 7-day pre/post impressions, clicks, positions.
 3. Categorize pages: gained, stable, lost.
 4. Analyze "lost" pages for common traits (thin content, weak E-E-A-T, outdated info).
@@ -440,7 +445,7 @@ you already shipped past.
 ### Classifier Context (Helpful Content, now in core since March 2024)
 
 - Operates at **site level**, not page level — too much unhelpful content drags the entire site down.
-- Uses behavioral signals: bounce rate, dwell time, return visits.
+- Behavioral inputs are inferred, not confirmed: the 2024 API leak and DOJ trial testimony describe click-based signals (NavBoost good/bad clicks, last-longest-click); Google denies using bounce rate or dwell time directly. Treat as directional.
 - Recovery requires sustained quality improvement, not one-off fixes; timeline 6-18 months for sites classified "mostly unhelpful" (within the general 6–24-month algorithmic-recovery window, SKILL.md).
 - Pages updated at least once per year gain an average of 4.6 positions vs stale pages (First Page Sage, Q1 2025 dataset).
 

@@ -8,7 +8,7 @@ Purpose: how to implement, link, validate, and win rich results with schema mark
 |---|---|
 | Schema must mirror visible page content exactly | Mismatched markup is a manual-action category (Google policy) |
 | Mark up only what the page really is | Schema must reflect the visible page and its main focus; don't add types just because they used to produce a rich result |
-| Real data only | No fabricated ratings/reviews; self-serving reviews (author reviews own product) are a trust violation. Google actively monitors for self-review and non-user-submitted content marked as reviews |
+| Real data only | No fabricated ratings/reviews; self-serving reviews (author reviews own product) are a trust violation. Google actively monitors for self-review and non-user-submitted content marked as reviews. Since Jul 24, 2026 the review-snippet guideline also bans fake reviews and undisclosed incentivized reviews (paid, discounted, free product) on the page or in markup — incentivized reviews are allowed only with clear, prominent disclosure; violation is a structured-data manual action that strips rich-result eligibility |
 | More types is not more eligibility | Be specific — use the most detailed applicable type; don't stack types hoping for extra rich results |
 | Never mark up hidden content | Policy violation; only content visible to readers |
 | No deception | Don't use schema to mislead users about what the page contains |
@@ -18,7 +18,7 @@ Purpose: how to implement, link, validate, and win rich results with schema mark
 | Metric | Value | Source |
 |---|---|---|
 | Rich snippet CTR increase | 20-35% vs standard results | Industry studies |
-| Nestle: rich result vs non-rich | 82% higher CTR | Google case study |
+| Nestle: rich result vs non-rich | 82% higher CTR | Google case study (pre-2020 — dated, directional) |
 | Schema and AI features | Google states structured data is NOT required for AI Overviews/AI Mode (official, May 2026). Schema still aids entity corroboration and machine understanding — implement for the entity graph, never as an "AI visibility" trick | Google Search Central, May 2026 |
 
 ## Format: prefer JSON-LD
@@ -64,7 +64,7 @@ Generate JSON-LD server-side into the raw HTML before it reaches the browser —
 | VideoObject | Video thumbnail in SERPs | Pages with embedded video |
 | LocalBusiness | Business info in local pack | Physical businesses |
 | JobPosting | Google Jobs listing | Job listings |
-| Course | Course info in search | Educational content |
+| Course | Course list rich result | Educational content — needs at least three courses marked up plus Carousel markup on a summary or all-in-one page (Course doc, Jul 4, 2026); a single course page cannot earn it |
 | SoftwareApplication | App info, ratings | App/software pages |
 
 ### E-E-A-T supporting
@@ -113,6 +113,7 @@ type:
 | Movie / Carousel / Vacation rental | Entertainment, list/carousel, lodging inventory | Use only for real inventory/list pages; don't convert thin affiliate pages into "rich-result" pages |
 | Subscription and paywalled content | Publishers/memberships with gated content | Pair with Flexible Sampling and paywall markup so Google can distinguish paywalls from cloaking |
 | SoftwareApplication | Apps and software product pages | Ratings/pricing must reflect the visible app listing, not marketing claims |
+| Aggregator unit / Supplier unit (EEA only) | Vertical search services (OTAs, comparison shopping, directories) as aggregators; direct providers (hotels, airlines, local businesses, service providers) as suppliers — extended to local-business queries Sep 18, 2026 | No structured data or Merchant Center needed beyond crawlable pages; aggregators need Vertical Search Service approval; see Google's "Regional differences in Search experience" doc (Sep 8, 2026) |
 
 Fact check / ClaimReview and Book actions are gated or legacy, not ordinary situational wins —
 see the retired/limited table below for their current status.
@@ -144,7 +145,7 @@ wins over local summaries.
 | Speakable | Advanced/limited; only use when the page truly has speakable news-style passages |
 | Product variants | New in 2025 — color/size/version variations for e-commerce |
 | Merchant listing | Expanded — free product listings in Google Shopping |
-| Merchant return/shipping/loyalty policies | Useful for e-commerce eligibility and Merchant Center consistency |
+| Merchant return/shipping/loyalty policies | Useful for e-commerce eligibility and Merchant Center consistency. Put the general return policy on `Organization.hasMerchantReturnPolicy`; an Offer-level `MerchantReturnPolicy` supports fewer properties and is for per-product overrides (return-policy doc, Sep 8, 2026) |
 | Product adult consideration | `hasAdultConsideration` added to Merchant listing and Product variant docs in May 2026 for parity with Merchant Center adult-product signals |
 | Organization structured data | Updated guidelines — expanded attributes for entity recognition |
 
@@ -323,7 +324,7 @@ PAA reveals underserved intent, content gaps, long-tail ideas, and user-journey 
 
 ## Google Discover
 
-Interest-based, not query-based — no keyword targeting. Mobile audience (Google app, Chrome mobile). Traffic pattern: sharp spikes fading within 48-72 hours. AI summaries covered 51% of the feed as of Nov 2025 (industry estimate). Early-2026 Discover shifts observed by publishers (industry reporting; Google ships no Discover-branded "core updates" — core updates affect Discover): original content weighted more heavily (summarization-only deprioritized), larger E-E-A-T role, more locally relevant content, clickbait reduction.
+Interest-based, not query-based — no keyword targeting. Mobile audience (Google app, Chrome mobile). Traffic pattern: sharp spikes fading within 48-72 hours. AI summaries covered ~51% of the feed as of Nov 2025 (industry estimate, unverified). Google shipped its first Discover-only core update Feb 5-27, 2026 (Search Central blog; English/US first, expansion promised) with three stated goals: more locally relevant content from in-country sites, less sensational/clickbait content, and more in-depth original content from sites with demonstrated expertise. Ordinary core updates also affect Discover. A Feb 2026 Discover collapse is that update, not a site-side regression.
 
 Eligibility/optimization checklist:
 

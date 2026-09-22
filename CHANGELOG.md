@@ -1,5 +1,38 @@
 # Changelog — seo-optimization (public)
 
+## 1.3.0 — 2026-09-22
+
+Freshness release: the July → September 2026 delta (35 sourced findings, load-bearing items
+re-verified on Google's own pages) plus a doctrine-consistency pass.
+
+- Site reputation policy: the Aug 28, 2026 rewrite (four factors) and the EEA carve-out (no manual
+  actions; the section is separated and ranks on its own); August 2026 spam update added; the 2026
+  update record and "no core update since Jun 2" noted in penalty triage.
+- Title rewrites: a third to three quarters of titles depending on the study's definition; over
+  60 chars is almost always rewritten; Google's AI-headline test noted.
+- Technical: crawl capacity is shared across all Google crawlers (Jul 22); canonical
+  re-evaluation takes up to two weeks (Jul 10), added as a lag trap; internal-search blocking is a
+  recommendation, not an Essentials guideline (Jul 31); crawlers send HEAD/OPTIONS/PUT/PATCH/DELETE;
+  fetch caps 2MB (Search) / 64MB (PDF) / 15MB (general).
+- Authority: HARO/Connectively closed Dec 2024 — replaced with Featured, Qwoted, Source of
+  Sources, ProfNet; Reddit "no special preference" (Aug 2026) and its ChatGPT-citation collapse.
+- Structured data: review-snippet fake / undisclosed-incentivized rule (Jul 24); return policy on
+  Organization, not Offer (Sep 8); Course needs three courses plus Carousel; EEA aggregator and
+  supplier units; LocalBusiness `@type` array and English opening-hours enumerations.
+- Measurement: generative-AI performance report and control live worldwide since Aug 31;
+  platform properties (YouTube/Instagram/TikTok/X); two GSC impression-history breaks (num=100
+  removal Sep 2025; logging error May 2025–Apr 2026) with the compare-clicks rule; hreflang
+  alternates are never indexed.
+- AI search: dated September 2026 with an operational "Start here" block; AI Overviews
+  auto-expanding into AI-Mode answers (Aug 28); Cloudflare's Sept 15 default flip and the
+  Googlebot-blocking risk; the agent-friendly guide and UCP; citation-concentration volatility.
+- Verticals: Google Business Profile Q&A removed (Ask button); Feb 2026 Discover core update;
+  Preferred Sources button and Search profile badge; Merchant Center 2026 spec and sale-duration
+  properties.
+- Doctrine consistency: category-page copy must pass the naturalness gate; edge pre-render must be
+  content-identical; image compression targets harmonized; "837 sites" correctly attributed to
+  manual actions; unsourced mechanism claims hedged; the audit workflow no longer names a model.
+
 ## 1.2.0 — 2026-07-07
 
 Accuracy release: audited fix wave over every reference file (29 findings; evidence-anchored).

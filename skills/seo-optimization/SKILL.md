@@ -9,7 +9,7 @@ description: "Use when doing any SEO work on any website — auditing or improvi
 
 Google ranks the best answer from the most trusted source. Optimization makes that quality
 legible to machines; it never substitutes for it. **Over-optimization is penalized harder than
-under-optimization**: the March 2024 core update deindexed 837 sites, and every update since has
+under-optimization**: the manual pure-spam actions issued alongside the March 2024 core update deindexed 837 of 49,345 tracked sites (Ian Nuttall's sample; every one showed AI-generated-content signals), and every update since has
 rewarded first-party "destination" content and demoted optimization theater (May 2026 core:
 intermediaries and aggregators lost heavily — major losers −40% to −63% visibility, Sistrix —
 while first-party destination sources gained). Google's own May 2026 AI-search
@@ -42,7 +42,7 @@ banners, family-friendly rules, "untouchable" surfaces) always override anything
 | Content freshness | 6% | Annual updates average +4.6 positions |
 | Everything else (schema, URL keywords, header keywords…) | ~1% each | Hygiene, never strategy |
 
-(First Page Sage Q1 2025 — still the operative study; no 2026 refresh exists as of 2026-07.)
+(First Page Sage Q1 2025 — still the operative study; no 2026 refresh exists as of 2026-09.)
 
 Confirmed internal signals worth acting on (2024 API leak + DOJ trial): **NavBoost** (good/bad
 clicks, last-longest-click, 13-month window): satisfy intent so users don't bounce back to the
@@ -64,7 +64,7 @@ exactly these patterns; the recipes below are the required shape.
 
 | Element | Recipe | The smell that fails the gate |
 |---|---|---|
-| Title tag | ONE primary phrase the way a person says it + one concrete differentiator, brand last, 50-60 chars | Two query phrases joined by "with/&/,": a keyword container — a prime rewrite trigger (Google rewrites roughly a third of titles overall) |
+| Title tag | ONE primary phrase the way a person says it + one concrete differentiator, brand last, 50-60 chars | Two query phrases joined by "with/&/,": a keyword container — a prime rewrite trigger (Google rewrites a third to three quarters of titles depending on the study's definition; over 60 chars is rewritten >95% of the time) |
 | H1 | States what the page delivers, in the page's own voice | Title-tag keyword set restated |
 | Headings | Outline the content from user questions/tasks FIRST, then check which queries it serves | Any heading traceable to a keyword list rather than the outline |
 | Body copy | Answers, evidence, specifics a reader needs; entities appear where they serve the sentence | A 4+ item entity/species/brand list justified as "coverage"; word count added as "depth" |
@@ -123,7 +123,7 @@ roundups", "expired domains", or "parasite/reputation leverage", classify it bef
 | Scaled content / impression farming | Would these pages exist if they could not earn impressions? |
 | AI-response manipulation | Is the page meant to manipulate AI answers rather than help a user complete a task? |
 | Doorway/cannibalization | Are variants targeting the same intent with thin substitutions? |
-| Site reputation abuse | Is third-party or weakly owned content using the host's authority more than its own value? |
+| Site reputation abuse | Is third-party or weakly owned content using the host's authority more than its own value? Google's Aug 28, 2026 policy rewrite judges it on four factors: presentation relative to the host, quality relative to the main domain, stated or implied authorship, and near-identical reuse across other sites |
 | Thin affiliation | Is there first-hand testing, comparison, pricing/context, or decision help beyond merchant copy? |
 | Expired-domain abuse | Is authority being borrowed from an unrelated prior domain purpose? |
 
@@ -135,10 +135,10 @@ measurable user/business purpose.
 deployed site, the proven full-audit shape is three parallel read-only agents that triangulate:
 SERP/competitor/intent + in-repo technical (file:line evidence) + deployed crawlability
 (rendered HTML, ~30 URLs, Googlebot UA). Never audit only the repo — audit what Google sees.
-Execution mode: these agents inherit the session model — always the strongest available Claude.
-If the session model is already top-tier and the site is small, run the three lenses inline in
-the main context instead of dispatching separate agents; never block on, or wait for, a specific
-model. Keep each lens read-only, dispatched or inline. Per-lens deliverable shapes and
+Execution mode: dispatch the three lenses as read-only subagents on whatever model the session
+chooses; this skill pins no model. If the site is small enough to reason about directly, run the
+three lenses inline in the main context instead of dispatching separate agents; never block on a
+specific model. Keep each lens read-only, dispatched or inline. Per-lens deliverable shapes and
 acceptance criteria are specified in `reference/measurement-and-audit.md` — check results
 against them before synthesizing.
 
@@ -207,7 +207,7 @@ Tempted to add keywords/schema/SEO copy? -> the naturalness gate, then decide
 |---|---|
 | Lazy-loading the LCP image | The most common self-inflicted CWV regression |
 | FAQ/schema JSON-LD drifting from visible text | Structured-data spam signal; manual-action category |
-| `aggregateRating` without real collected ratings | Manual action strips ALL rich results site-wide |
+| `aggregateRating` without real collected ratings, or built on fake or undisclosed incentivized reviews (review-snippet guideline, Jul 24, 2026) | Manual action strips ALL rich results site-wide |
 | noindex/robots block left on after staging or migration | Silent deindexing; check first in every audit |
 | Optimizing titles for keywords at the cost of click-appeal | NavBoost measures clicks; a keyword title nobody clicks loses twice |
 | New page per query variant | Cannibalization — consolidate, 301 the loser |

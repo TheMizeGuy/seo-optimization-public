@@ -1,14 +1,16 @@
-# AI Search & GEO — Current State (July 2026)
+# AI Search & GEO — Current State (September 2026)
 
-Purpose: what an agent doing SEO work on any site must know about AI Overviews, AI Mode, and AI assistants as of July 2026 — current numbers, Google's official doctrine, what earns citations, crawler/robots strategy, and measurement.
+Purpose: what an agent doing SEO work on any site must know about AI Overviews, AI Mode, and AI assistants as of September 2026 — current numbers, Google's official doctrine, what earns citations, crawler/robots strategy, and measurement.
+
+**Start here (operational):** §5 is the evidence-backed practice list — do those six things and refuse the hype table. §7 sets AI-crawler robots policy. §8 sets up measurement. Everything else here is the evidence and current state behind them; read it before quoting a number.
 
 ## 1. Headline correction — read first
 
 | Claim circulating widely | Reality (primary-sourced) |
 |---|---|
-| "AI Mode became Google's default search experience at I/O 2026" | **Overstated — false as of July 2026.** Google's own I/O 2026 post (blog.google, May 19-20, 2026) says **Gemini 3.5 Flash became the default model WITHIN AI Mode** globally (~200 countries, 98 languages); it does not say AI Mode replaced the classic SERP. Lumar's May 2026 roundup explicitly confirms AI Mode was NOT made the default. AI Mode was only **~0.34% of search sessions** Jan-Apr 2026 (Seer Interactive, 25.1M impressions). Google did report AI Mode passed **1B monthly users** with queries doubling quarterly — big and growing, but not "the default SERP" |
+| "AI Mode became Google's default search experience at I/O 2026" | **Overstated — false as of September 2026.** Google's own I/O 2026 post (blog.google, May 19-20, 2026) says **Gemini 3.5 Flash became the default model WITHIN AI Mode** globally (~200 countries, 98 languages); it does not say AI Mode replaced the classic SERP. Lumar's May 2026 roundup explicitly confirms AI Mode was NOT made the default. AI Mode was only **~0.34% of search sessions** Jan-Apr 2026 (Seer Interactive, 25.1M impressions). Google did report AI Mode passed **1B monthly users** with queries doubling quarterly — big and growing, but not "the default SERP" |
 
-Operative posture: AI Overviews are the at-scale CTR suppressor today; AI Mode is a near-total click black hole (93% zero-click, Seer 2026) that is still a small share of sessions. Monitor its growth post-I/O; do not panic-report historical damage or build plans on "AI Mode is the default."
+Operative posture: AI Overviews are the at-scale CTR suppressor today; AI Mode is a near-total click black hole (93% zero-click, Seer 2026) that is still a small share of sessions — but since late Aug 2026 Google auto-expands AI Overviews into full AI-Mode-style answers on selected queries with no "Show more" click and shows the "Ask anything" box by default (Google statement, Aug 28, 2026), so the black-hole format now reaches ordinary queries through AIO. Similarweb puts AIO presence at ~43% of Google searches (May 2026, single vendor). Plan for exposure through AIO, not AI Mode's session share; do not panic-report historical damage or build plans on "AI Mode is the default."
 
 ## 2. AI Overviews / AI Mode — current state
 
@@ -57,13 +59,11 @@ AI Mode and AI Overviews are **two distinct citation systems** — track and opt
 
 ### Ads context (why Google won't reverse course)
 
-- Google Marketing Live 2026 (May 20, 2026): Conversational Discovery ads, Highlighted Answers inside AI Mode, AI-powered Shopping ads, Business Agent for Leads (blog.google GML post).
-- Ads alongside AIOs: ~3% of SERPs (Jan 2025) → ~40% (Nov 2025) per Semrush.
-- Google Search revenue Q4 2025: $63.07B, +17% YoY (Alphabet SEC filing). Web traffic falls while Google revenue rises.
+Google's Search revenue keeps rising while web referrals fall (Q4 2025: $63.07B, +17% YoY, Alphabet SEC filing; ads alongside AIOs went from ~3% of SERPs in Jan 2025 to ~40% in Nov 2025, Semrush; Google Marketing Live, May 20, 2026, put ads inside AI Mode). Plan for AI surfaces as permanent, not a phase.
 
 ## 3. Google's official doctrine — "GEO is still SEO" (May 15, 2026)
 
-"Optimizing your website for generative AI features on Google Search" — Google's **first official AI-search optimization guide** (developers.google.com/search/docs/fundamentals/ai-optimization-guide, May 15, 2026; llms.txt subsection added June 15, 2026). This is the citable anchor for the whole topic.
+"Optimizing your website for generative AI features on Google Search" — Google's **first official AI-search optimization guide** (developers.google.com/search/docs/fundamentals/ai-optimization-guide, May 15, 2026; llms.txt subsection added June 15, 2026; last updated Jul 10, 2026). This is the citable anchor for the whole topic.
 
 | Google's position | Detail |
 |---|---|
@@ -72,7 +72,7 @@ AI Mode and AI Overviews are **two distinct citation systems** — track and opt
 | Explicitly NOT needed | llms.txt / AI text files / special markup or Markdown; **content chunking** ("systems can understand multi-topic pages"); AI-specific rewriting; long-tail synonym-variant rewriting; manufactured brand mentions |
 | Structured data | **Not required** for generative AI features (still useful for rich results and entity disambiguation) |
 | What moves the needle | Unique, valuable, "non-commodity" content with distinctive perspective; good page experience; Merchant Center / Business Profile for commerce/local |
-| Agentic experiences | Optional extra-time track for businesses where agents may compare, book, buy, or inspect inventory. Prepare normal accessible web apps: crawlable public data, stable DOM, accurate product/service details, accessible names, visible availability/pricing, and secure transaction flows. Do not treat agent readiness as an SEO/GEO hack |
+| Agentic experiences | Optional extra-time track for businesses where agents may compare, book, buy, or inspect inventory. Prepare normal accessible web apps: crawlable public data, stable DOM, accurate product/service details, accessible names, visible availability/pricing, and secure transaction flows. The Jul 10, 2026 revision points to a dedicated agent-friendly-website best-practices page and names the Universal Commerce Protocol (UCP) for businesses with transactional needs. Do not treat agent readiness or UCP as an SEO/GEO hack |
 
 Companion doctrine in the same window:
 
@@ -127,7 +127,7 @@ Real updates and honest datelines — not date-bumping.
 | Finding | Source (date) |
 |---|---|
 | 44.2% of AIO citations come from the first 30% of a page's content — answer-first ordering matters. Compatible with Google's "no chunking needed": put the answer early, don't fragment pages | SparkToro, Jan 2026 (via Omnibound) |
-| Citation concentration: YouTube 23.3% + Wikipedia 18.4% of AIO citations; Reddit ~21%; top 15 domains = 68% of 680M citations | Surfer SEO (46M citations); DemandSage; 5WPR Citation Index |
+| Citation concentration: YouTube 23.3% + Wikipedia 18.4% of AIO citations; Reddit ~21%; top 15 domains = 68% of 680M citations | Surfer SEO (46M citations); DemandSage; 5WPR Citation Index — snapshots only: platform shares can move 80%+ in a week from an unannounced vendor change (Reddit's ChatGPT citation share fell ~86% Aug 8-14, 2026); track per engine, never present concentration as durable |
 | Counterweight: brand-owned sites rose to 31% of citations, up from 26% — owned content is gaining citation share | Presenc AI, 84K queries, Apr 2026 |
 
 ### The overlap collapse (major post-2025 delta)
@@ -180,7 +180,7 @@ Verdict: zero evidence of citation benefit; explicit non-support from Google; no
 |---|---|---|---|---|
 | OpenAI | GPTBot | OAI-SearchBot (block = out of ChatGPT search answers) | ChatGPT-User (may not honor robots.txt like a crawler) | Fully separated tokens since late 2024 |
 | Anthropic | ClaudeBot | Claude-SearchBot | Claude-User | All three documented robots.txt-respecting; independent tokens |
-| Google | Google-Extended (Gemini **training** opt-out ONLY) | Googlebot (feeds Search AND AIO/AI Mode) | Google-Agent — explicitly ignores robots.txt | **Blocking Google-Extended does NOT remove you from AI Overviews/AI Mode.** Use Search Console's **Search generative AI control** where available (rolling out to a subset of owners) to exclude links/content from AIO, AI Mode, and gen-AI Discover without affecting ordinary Search ranking/inclusion; otherwise snippet/index controls affect regular Search too |
+| Google | Google-Extended (Gemini **training** opt-out ONLY) | Googlebot (feeds Search AND AIO/AI Mode) | Google-Agent — a user-triggered fetcher, so robots.txt does not apply (Google is trialling Web Bot Auth identity for it); NotebookLM's agent was renamed Google-GeminiNotebook Jul 16, 2026 | **Blocking Google-Extended does NOT remove you from AI Overviews/AI Mode.** Use Search Console's **Search generative AI control** (all websites worldwide since Aug 31, 2026) to exclude links/content from AIO, AI Mode, and gen-AI Discover without affecting ordinary Search ranking/inclusion — never substitute snippet/index controls; they degrade ordinary Search |
 | Microsoft | — | Bingbot (feeds Bing + Copilot) | Copilot Actions uses ordinary browser UAs | Blocking Bingbot = out of Copilot |
 | Perplexity | — | PerplexityBot | Perplexity-User | Compliance disputed — accused by Cloudflare (2025) of stealth crawling with undeclared UAs; delisted as Verified Bot; unresolved as of mid-2026 |
 | Meta | Meta-ExternalAgent | — | Meta-ExternalFetcher | |
@@ -202,10 +202,11 @@ Doctrine (No Hacks, Apr 13, 2026): "Respecting robots.txt is a vendor-level prop
 
 - Baseline (Jul 2025): AI crawlers blocked **by default for new Cloudflare zones**; Pay Per Crawl (HTTP 402) closed beta.
 - **Jul 1, 2026 Cloudflare policy** ([official blog](https://blog.cloudflare.com/content-independence-day-ai-options/)):
-  Cloudflare now classifies AI traffic by purpose: Search, Agent, and Training. From **Sept 15, 2026**, new domains on Cloudflare will block
+  Cloudflare now classifies AI traffic by purpose: Search, Agent, and Training. Since **Sept 15, 2026**, new domains on Cloudflare block
   Training and Agent crawlers by default on pages that display ads while Search remains allowed by
-  default. Multi-purpose crawlers are enforced by all of their behaviors, so Search+Training bots
-  can be blocked when the owner blocks Training. Existing customers can opt out or change settings
+  default. Multi-purpose crawlers are enforced by all of their behaviors, so blocking Training also
+  blocks Googlebot, Bingbot and Applebot — blocking training on Cloudflare can remove a site from
+  Google Search; verify Googlebot access after any AI-crawl setting change. Existing customers can opt out or change settings
   before the switch.
 - Pay Per Crawl → "Pay Per Use" (paid when content appears in an answer, not merely fetched). Partners: Ceramic.ai, You.com. No major AI lab (OpenAI/Anthropic/Google) has signed on as of Jul 2026.
 
@@ -215,8 +216,8 @@ Doctrine (No Hacks, Apr 13, 2026): "Respecting robots.txt is a vendor-level prop
 |---|---|
 | Search/retrieval + user-triggered bots (OAI-SearchBot, Claude-SearchBot, PerplexityBot, Bingbot, *-User) | **Allow** if you want AI citations and AI-referred visitors; blocking removes you from those answer surfaces (OpenAI documents this explicitly) |
 | Training bots (GPTBot, ClaudeBot, Meta-ExternalAgent, CCBot, Google-Extended, Applebot-Extended) | Content-licensing decision with no citation-visibility cost today. CCBot caveat: blocking removes you from most open-source-model training data. "Training presence feeds long-run model memory of your brand" is industry speculation — treat as unproven |
-| Ad-monetized sites (emerging mid-2026 default posture) | Allow search/user bots, block training bots, enforce at CDN (Cloudflare AI Crawl Control / audit), watch the Sept 15, 2026 default flip |
-| Google | Prefer the Search Console **Search generative AI control** where available: `Include` is default; `Exclude` removes links/content from AIO, AI Mode, and gen-AI Discover, is not a normal Search ranking/inclusion signal, and does not control Gemini training (use Google-Extended for that). If the property lacks access, the fallback remains snippet/index controls, which also affect regular Search presentation |
+| Ad-monetized sites (emerging mid-2026 default posture) | Allow search/user bots, block training bots, enforce at CDN (Cloudflare AI Crawl Control / audit), verify Googlebot is still allowed after Cloudflare's Sept 15, 2026 default flip |
+| Google | Use the Search Console **Search generative AI control** (all websites worldwide since Aug 31, 2026): `Include` is default; `Exclude` removes links/content from AIO, AI Mode, and gen-AI Discover, is not a normal Search ranking/inclusion signal, and does not control Gemini training (use Google-Extended for that). Do not substitute snippet/index controls; they degrade ordinary Search presentation |
 
 ## 8. Measuring AI-referral traffic
 
@@ -240,9 +241,9 @@ Standard mitigation: layer a custom channel group with a source regex above Refe
 Announced June 3, 2026 (Google Search Central blog): dedicated reports for **AI Overviews, AI Mode, and generative AI features in Discover**.
 
 - **Impressions only** at launch — by page, country, device, date (hourly→monthly). No clicks, no CTR, no query data.
-- Phased rollout to a subset of properties (initial cohort reported UK-based); no global date.
+- Rolled out to all properties worldwide on Aug 31, 2026 (a mid-Aug data bug affected early figures).
 - Before this, AI Mode clicks/impressions were silently lumped into GSC Web totals since mid-2025 with no breakdown — these are the first AI-feature-specific data Google has ever exposed.
-- Related: Search Console now has a **Search generative AI control** for a subset of site owners.
+- Related: the **Search generative AI control** is live for all websites worldwide (Aug 31, 2026).
   `Exclude` prevents links/content from being visible in, linked from, or used to ground AI
   Overviews, AI Mode, and generative AI features in Discover; it is not a normal Search
   ranking/inclusion signal and does not affect Gemini training.
@@ -259,6 +260,8 @@ $300M+ raised in the category mid-2025→spring 2026 (Surmado landscape): Profou
 | AI sources as share of publisher pageviews | <1%, despite ChatGPT referrals +200% YoY | Chartbeat via Nieman Lab, Mar 2026 |
 | ChatGPT share of gen-AI referral traffic | ~64.5%, down from ~86.7% a year earlier — fragmenting toward Gemini/Claude/Perplexity/Copilot | Goodie / The Digital Bloom, Feb 2026 |
 | Conversion quality | AI-referred visitors convert several-fold better than average organic (magnitudes vary widely by study — keep the claim directional) | Multiple B2B datasets, 2026 |
+
+So what: report AI referrals as a small, growing line, and never let AI-visibility work displace the classic organic work that still delivers the overwhelming majority of search traffic.
 
 ## 9. Entity SEO — the AI-visibility mechanism
 
@@ -281,7 +284,7 @@ The tactic table (naming consistency, first-mention definitions, co-occurrence, 
 | Old claim (Apr 2026 internal baseline unless noted) | Status as of Jul 2026 |
 |---|---|
 | AIO trigger rate ~58% of searches | **Superseded** — matches no mid-2026 tracker; honest range ~25% (Semrush/Conductor) to ~50% (BrightEdge / Google official, US, Feb 2026) |
-| AI Mode on Gemini 2.5, 180+ countries | **Superseded** — Gemini 3.5 Flash default model within AI Mode, ~200 countries, 98 languages (I/O 2026, May 19-20, 2026) |
+| AI Mode on Gemini 2.5, 180+ countries | **Superseded twice** — Gemini 3.5 Flash at I/O 2026 (May 19-20), then Gemini 3.7 Flash from Aug 13, 2026 (Search Engine Roundtable, Sep 2026 roundup). The model name is a moving detail; quote surface behavior, not the model |
 | "AI Mode is now the default Google search experience" (circulating claim) | **False** — see §1; Google's own post + Lumar confirm not-default |
 | −46.7% organic CTR when AIO present (68K-query study, 2025) | Historical. Operative 2026 frame: CTR bottomed then rebounded 85%; ~37% structural gap; +120% citation premium (Seer, Apr 24, 2026) |
 | Zero-click = 60% of searches (Semrush 2025) | **Superseded** — ~64.8-68% (SparkToro 2026) |

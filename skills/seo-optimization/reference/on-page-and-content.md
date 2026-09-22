@@ -23,7 +23,7 @@ Actionable core for on-page optimization, E-E-A-T, topical authority, and conten
 | CTR triggers | Concrete differentiators, tested counts, dates, or scope statements that are true |
 | Avoid | Keyword stuffing, ALL CAPS, misleading titles |
 
-Google rewrites roughly a third of titles overall — triggered by too long/short, excessive keywords, content mismatch, boilerplate patterns, or excessive branding; keyword-container titles are prime rewrite bait. Compelling accurate titles reduce rewrites.
+Google rewrites a third to three quarters of titles depending on how a rewrite is counted (Ahrefs 2021 ~33%; Zyppy ~62% of 80K titles; Search Engine Land Q1 2025 ~76%). Length is the dominant trigger — titles over 60 chars are rewritten >95% of the time, unchanged titles average ~45 chars — then excessive keywords, content mismatch, boilerplate patterns, or excessive branding; keyword-container titles are prime rewrite bait. Compelling accurate titles in the 50-60 char band reduce classic rewrites. Separately, Google confirmed (Mar 2026) a small test that replaces titles in Search with AI-generated headlines (already shipped in Discover); a good title cannot opt out of that, so keep the H1 and opening passage consistent with the title so any generated headline still matches the page.
 
 ## Meta Descriptions
 
@@ -34,7 +34,7 @@ Google rewrites roughly a third of titles overall — triggered by too long/shor
 | Voice | Active voice, clear call-to-action, value proposition |
 | Uniqueness | Unique per page |
 
-Google rewrites ~63% of descriptions — write custom ones anyway. Pages with a meta description see ~5.8% higher CTR than pages without one (industry study); Google's auto-pulled text is usually less compelling.
+Google rewrites most descriptions (~63%, industry studies — unverified, directional) — write custom ones anyway. Pages with a meta description see ~5.8% higher CTR than pages without one (industry study, unverified); Google's auto-pulled text is usually less compelling.
 
 ## Heading Structure
 
@@ -124,7 +124,7 @@ Serve via `<picture>` with AVIF → WebP → JPEG fallback.
 
 - [ ] Descriptive filenames (`blue-running-shoes.webp`, not `IMG_4832.webp`)
 - [ ] Explicit `width`/`height` (prevents CLS)
-- [ ] Compress: <200KB most images, <100KB thumbnails
+- [ ] Compress: thumbnails <30KB, content images <100KB, hero/LCP image <200KB (same targets as specialized.md § Image)
 - [ ] `srcset` responsive variants; CDN delivery
 - [ ] Images in XML sitemap (or dedicated image sitemap)
 - [ ] Below-fold images: `loading="lazy"`

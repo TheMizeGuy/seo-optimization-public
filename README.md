@@ -2,11 +2,11 @@
 
 A site-agnostic SEO playbook skill for [Claude Code](https://claude.ai/claude-code): real
 authority, higher Google rankings, zero keyword stuffing or over-optimization bloat. Current as
-of July 2026, primary-sourced (Google Search Central, Search Status Dashboard, web.dev, official
+of September 2026, primary-sourced (Google Search Central, Search Status Dashboard, web.dev, official
 crawler docs), and behaviorally tested against the failure mode that actually matters — capable
 models over-optimizing subtly, not crudely.
 
-**Version 1.1.0** · MIT · one skill, ten reference files, no dependencies
+**Version 1.3.0** · MIT · one skill, ten reference files, no dependencies
 
 ## Install
 
@@ -64,7 +64,7 @@ troubleshooting table.
 - **Operational runbooks** — seven-step traffic-drop triage, GSC lag discipline (classify every
   finding LIVE-DEFECT / ALREADY-FIXED / INTENDED before fixing), monthly CTR quick-win loop,
   core-update response, migration protocol, new-site launch checklist.
-- **AI search / GEO, evidence-graded** — the July 2026 state of AI Overviews and AI Mode, what
+- **AI search / GEO, evidence-graded** — the September 2026 state of AI Overviews and AI Mode, what
   actually earns citations (sourced), the llms.txt verdict, the three-tier AI crawler map, AI
   traffic measurement, and a superseded-claims ledger so stale numbers don't get repeated.
 - **The honesty rule** — most "why aren't we page 1" cases are majority off-site authority; the

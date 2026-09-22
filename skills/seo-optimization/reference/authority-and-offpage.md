@@ -43,7 +43,7 @@ Link value hierarchy (best to worst):
 |----------|-------------|--------|-------|
 | Digital PR | Newsworthy content (original research, data studies, industry reports) journalists link to | High | Very High |
 | Original research & data | Surveys, case studies, proprietary data that become cited sources | High | Very High |
-| Expert roundups / quotes | Become a quoted source via HARO, Connectively, journalist outreach | Medium | High |
+| Expert roundups / quotes | Become a quoted source via Featured (owns the HARO name since Apr 2025; quality uneven), Qwoted, Source of Sources, Help a B2B Writer, ProfNet, direct journalist outreach — Connectively, the old HARO, shut down Dec 2024 | Medium | High |
 | Linkable assets | Tools, calculators, interactive content, comprehensive guides | High | Very High |
 
 ### Tier 2 — sustained growth
@@ -85,7 +85,7 @@ The Tier 1 engine in practice: publish something only you can publish, then pitc
 - Original research (surveys, proprietary datasets, industry reports) becomes the cited source other sites must link to — the only link tactic that compounds.
 - Data studies and statistics pages attract passive links for years; keep them updated so citations refresh.
 - Free tools and calculators are permanent linkable assets; one strong tool outperforms dozens of guest posts.
-- Expert-quote pipelines (HARO/Connectively, direct journalist relationships) convert expertise into recurring editorial links and brand mentions.
+- Expert-quote pipelines (Featured, Qwoted, Source of Sources, ProfNet, direct journalist relationships — the original HARO/Connectively closed Dec 2024) convert expertise into recurring editorial links and brand mentions.
 
 ## Anchor-Text Distribution — Smell Detector, Not Quota
 
@@ -251,7 +251,7 @@ Cadence: monthly ranking-change review; quarterly full keyword + backlink gap re
 
 ## Reddit and Community Presence
 
-Reddit's standing (internal-benchmark figures): #2 Google visibility (after Wikipedia); 108M daily actives; 1B monthly visits; near-universal first-page presence on product-review/experience-type queries (do not quote the "97% of all searches" version circulating in mills — no such measurement exists); $60M/year Google licensing deal for content/AI training. Google's "hidden gems" ranking system (confirmed live with the November 2023 core update) prioritized authentic community content; engagement signals (upvotes, comments) act as quality proxies.
+Reddit's standing (internal-benchmark figures — a 2025 peak, not a structural given): #2 Google visibility (after Wikipedia); 108M daily actives; 1B monthly visits; near-universal first-page presence on product-review/experience-type queries (do not quote the "97% of all searches" version circulating in mills — no such measurement exists); $60M/year Google licensing deal for content/AI training. Google's "hidden gems" ranking system (confirmed live with the November 2023 core update) prioritized authentic community content; engagement signals (upvotes, comments) act as quality proxies. Since then: Google stated on the record (Aug 4-5, 2026) that Reddit gets no special preference in ranking or AI features; Reddit's Google referrals fell through 2026 under AI Overviews; and Reddit's share of ChatGPT citations collapsed ~86% in one week (Aug 8-14, 2026) after an unannounced OpenAI retrieval change plus Reddit's own crawler blocks. Treat Reddit as one community channel whose visibility can move without any site-side cause.
 
 | Do | Don't |
 |----|-------|

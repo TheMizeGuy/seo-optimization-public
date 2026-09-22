@@ -17,7 +17,7 @@ Highest-ROI SEO investment for businesses with physical locations. Google Busine
 | Address / phone | Must match website and all citations exactly; local number > toll-free |
 | Description | 750 chars: services, areas served, differentiators |
 | Photos | 10+, add weekly — businesses with photos get 42% more direction requests |
-| Posts / Q&A | Keep updates current and answer real questions where the surface supports it; never seed fake questions or reviews |
+| Posts / Q&A | Keep Posts current. Owner-seeded Q&A is dead: the Q&A API was discontinued Nov 3, 2025 and the public Q&A section removed from Dec 2025, replaced by a Gemini-powered "Ask" button that answers from your business details, posts and reviews — keep those accurate instead; never seed fake reviews |
 
 ### Local pack ranking
 
@@ -45,7 +45,7 @@ Respond to negatives within 24 hours; resolve offline; never argue.
 ### On-page
 
 - Multi-location: one unique page per location — unique H1 ("[Service] in [City]"), 500+ unique words, local landmarks, embedded map, location-specific LocalBusiness schema + photos.
-- Schema: use the most specific `@type` (`Restaurant`, `Dentist`, `LegalService`) not generic `LocalBusiness`; include address, geo, telephone, openingHoursSpecification, aggregateRating (real collected reviews only — fabricated ratings are a site-wide manual action, SKILL.md common mistakes).
+- Schema: use the most specific `@type` (`Restaurant`, `Dentist`, `LegalService`) not generic `LocalBusiness`; a multi-service business lists its types as an array on `@type` (`["Electrician","Plumber"]`) — `additionalType` is not supported (Local Business doc, Aug 31, 2026); include address, geo, telephone, openingHoursSpecification (standard schema.org enumeration values only, in English even on localized sites — Aug 15, 2026), aggregateRating (real collected reviews only — fabricated ratings are a site-wide manual action, SKILL.md common mistakes).
 
 ---
 
@@ -53,7 +53,7 @@ Respond to negatives within 24 hours; resolve offline; never argue.
 
 ### Mobile-first (applies to 100% of websites)
 
-Google indexes the **mobile version**. Mobile is the majority of Google searches (~60-65% per 2025 trackers — directional). 53% of mobile users leave if load >3s.
+Google indexes the **mobile version**. Mobile is the majority of Google searches (~60-65% per 2025 trackers — directional). 53% of mobile visits are abandoned when load exceeds 3s (Google/SOASTA 2017 — dated, directional).
 
 Parity checklist (mobile must equal desktop):
 - [ ] Identical text content (nothing hidden on mobile)
@@ -100,7 +100,7 @@ Methods: HTML `<link>` tags (<100 combos), XML sitemap annotations (large sites)
 | Wrong codes ("en-uk" for the UK — the region must be ISO 3166-1: "en-gb"; note "uk" alone IS valid and means the Ukrainian language, while "ua" is not a language code at all) | Annotation ignored or wrong-audience targeting |
 | Pointing at non-200 pages | Annotation ignored |
 | Missing x-default | No fallback for unmatched users |
-| Hreflang on non-canonical URLs | Conflicts with canonical signals |
+| Hreflang on non-canonical URLs | Conflicts with canonical signals. Inverse trap: hreflang alternates are never indexed in their own right — once Google canonicalizes a cluster the other URLs become alternate names served when the query deserves them (Illyes, Aug 2026), so a language variant showing "not indexed" in GSC is expected, not a defect |
 
 Localization: transcreate, don't translate — local keyword research per market, local examples/CTAs/currency. Create separate GSC properties per country/language version.
 
@@ -174,7 +174,14 @@ Do not create a new sitemap file for every update; update the existing sitemap a
 - Original photos, documents, datasets, interviews, or local reporting whenever possible.
 - Preferred Sources is a publisher/audience feature: if the site is eligible, readers can select
   the domain or subdomain as a preferred source. It can surface badges in Top Stories and, since
-  May 2026, AI Overviews and AI Mode. Treat this as audience development, not a ranking hack.
+  May 2026, AI Overviews and AI Mode, and Google says preferred publishers surface more often in
+  AI answers. Implement the embeddable "add as preferred source" button on article templates (doc
+  update Jul 24, 2026; 345K+ sources selected by Aug 2026). Treat this as audience development,
+  not a ranking hack.
+- Search profile badge (guide published Sep 16, 2026; US-only; follower threshold now 10,000): a
+  Search profile aggregates the site's content with connected YouTube/Instagram/TikTok/X accounts,
+  and the badge lets readers follow from your own pages. Respect the brand rules (undistorted
+  "Super G", 44-48 px tap target).
 
 ### Paywalls, subscriptions, and Web Stories
 
@@ -197,7 +204,14 @@ clear narrative arc; keep the canonical article or landing page strong.
 - Product schema: name, image[], description, sku, brand, offers (price, priceCurrency, priceValidUntil, availability, itemCondition), aggregateRating (real ratings only).
 - Variant schema (2025+): nest variants under `hasVariant` with per-variant color/size/offers.
 - Merchant listing consistency: structured data, Merchant Center feed, visible product page,
-  shipping, returns, loyalty, price, and availability must agree. Google can use Merchant Center
+  shipping, returns, loyalty, price, and availability must agree. Sale prices carry
+  `validFrom`/`validThrough` (or `priceValidUntil`) so the effective range is explicit (Sale
+  duration section, Jul 7, 2026); `Product.category` takes Text or CategoryCode. The sitewide
+  return policy belongs on `Organization.hasMerchantReturnPolicy` — an Offer-level
+  `MerchantReturnPolicy` supports fewer properties and is for per-product overrides only
+  (return-policy doc, Sep 8, 2026). Merchant Center's 2026 spec adds `handling_cutoff_time`,
+  `minimum_order_value`, loyalty labels under `shipping`, and `video_link` (phased Apr 2026 to
+  Jan 2027). Google can use Merchant Center
   for free listings and AI/Search product surfaces; stale markup creates diagnostics noise and
   poor user trust.
 - Adult-oriented products: use `hasAdultConsideration` in Product / Merchant listing / variant
@@ -207,7 +221,7 @@ clear narrative arc; keep the canonical article or landing page strong.
 
 ### Category pages
 
-Rank for broad commercial keywords product pages can't. Add 200-400 words of SEO content **below the product grid** (above pushes products under the fold). CollectionPage/OfferCatalog schema. Never create indexable URL variants for sort parameters.
+Rank for broad commercial queries product pages can't. If shoppers need help choosing, add a short buyer's guide (roughly 200-400 words) **below the product grid** — what differentiates the products, sizing/fit/compatibility notes, answers to questions buyers actually ask (above the grid pushes products under the fold). It passes the naturalness gate only if a merchandiser would keep it with search engines gone; a category with nothing useful to say gets no copy. CollectionPage/OfferCatalog schema. Never create indexable URL variants for sort parameters.
 
 ### Faceted navigation (the biggest e-comm technical challenge)
 
@@ -338,7 +352,7 @@ Checklist floor: semantic elements (`<header>/<main>/<article>/<nav>/<footer>` �
 |---|---|
 | Full-screen popups on mobile entry from search | Age verification gates |
 | Standalone interstitials before content loads | Cookie consent (legally required) |
-| Popups covering above-fold content; app-install interstitials | Login walls on genuinely private content; banners using <15% of screen |
+| Popups covering above-fold content; app-install interstitials | Login walls on genuinely private content; banners using a reasonable amount of screen space (Google's wording; industry rule of thumb is 15% or less) |
 
 Delay promos until scroll or 30+ seconds; exit-intent is generally acceptable; prefer slide-ins/bottom bars over centered overlays.
 
@@ -355,7 +369,7 @@ Rules: publish on your site FIRST, submit to GSC URL Inspection immediately, wai
 ### Social + CRO notes
 
 - Social signals: not a direct ranking factor. Highest indirect value: Reddit (direct Google ranking, #2 visibility after Wikipedia — internal benchmark; AI training data), LinkedIn (B2B), YouTube.
-- CRO/SEO shared levers: CWV, mobile UX, clear CTAs, trust signals. Benchmark: every 100ms delay = -7% conversions. Serve universal content to bots + personalize client-side; canonical-control A/B variants.
+- CRO/SEO shared levers: CWV, mobile UX, clear CTAs, trust signals. Benchmark: every 100ms delay = -7% conversions (Akamai 2017 — dated, directional). Serve universal content to bots + personalize client-side; canonical-control A/B variants.
 
 ---
 

@@ -9,8 +9,9 @@ full catalog behind them.
 Google penalizes over-optimization harder than under-optimization, and the failure mode has
 evolved. Crude spam (hidden text, stuffing) is algorithmically detected and largely extinct in
 competent work. The live failure mode is **subtle, defensible-looking over-optimization**: each
-element justified by a real signal, the sum reading as SEO'd. Engagement systems (NavBoost)
-punish exactly that sum: a page that reads SEO'd gets skipped, pogo-sticked, and demoted.
+element justified by a real signal, the sum reading as SEO'd. Engagement systems (NavBoost, per
+the 2024 API leak and DOJ trial testimony) measure exactly that sum: a page that reads SEO'd gets
+skipped, pogo-sticked, and demoted.
 
 ## Tier 1 — policy violations (manual-action territory)
 
@@ -20,7 +21,7 @@ structured-data actions strip ALL rich results site-wide.
 | Violation | What it looks like | Severity |
 |---|---|---|
 | Scaled content abuse | Mass-produced pages (AI or human) primarily for ranking | Critical — March 2024's primary target |
-| Site reputation abuse (parasite SEO) | Third-party or weakly owned content exploiting the host domain's authority | Critical — manual-action policy; not a named March/June 2026 spam-update target |
+| Site reputation abuse (parasite SEO) | Third-party or weakly owned content exploiting the host domain's authority. Policy rewritten Aug 28, 2026 ("Site reputation policy"): judged on presentation relative to the host, quality relative to the main domain, stated or implied authorship, and near-identical reuse across other sites | Critical outside the EEA — manual action on the affected section. Inside the EEA no manual actions (European Commission mandate): the section is separated in Google's systems and ranks on its own merits. Not a named target of the March/June/August 2026 spam updates |
 | Expired domain abuse | Buying domains to exploit residual authority | Critical |
 | Cloaking / sneaky redirects | Different content for bots vs users | Critical |
 | Link schemes | Paid links without `rel="sponsored"`, PBNs, exchanges | High — a small site does not survive a link action |
@@ -52,7 +53,7 @@ well-intentioned agent in baseline testing (2026-07-01) — these are the defaul
 
 | Anti-pattern | What it looks like | Why it backfires |
 |---|---|---|
-| Title-tag keyword container | "Plant Care App with Watering Reminders & Houseplant Tracker \| Brand" | Reads as a list; the exact "excessive keywords" pattern behind Google's ~36% title rewrites, so you lose control of your own snippet |
+| Title-tag keyword container | "Plant Care App with Watering Reminders & Houseplant Tracker \| Brand" | Reads as a list; the exact "excessive keywords" pattern that triggers Google's title rewrites (a third to three quarters of titles are rewritten depending on the study; over 60 chars almost always), so you lose control of your own snippet |
 | Query-mapped architecture | One heading/section per target query instead of a user-need outline | Doorway thinking at section scale; produces repetitive structure users skim past |
 | Entity stuffing | 4+ entities in one sentence justified as "entity coverage" | Keyword stuffing in 2026 clothes; entities earn relevance in explanatory context, not lists |
 | Boilerplate keyword insertion | Keywords added to nav labels, footer straplines, copyright lines, taglines | The oldest stuffing pattern; boilerplate is discounted and the intent is legible |
@@ -100,7 +101,7 @@ Run these against any page you just optimized:
 | Signal | Diagnosis | Path |
 |---|---|---|
 | GSC manual-action notification | Manual action | Fix every listed violation → document → reconsideration request (10–30 days). Honest, specific, evidence-backed |
-| Drop coincides exactly with a confirmed update (check the Search Status Dashboard) | Algorithmic | No reconsideration exists. Fix quality; recovery lands at subsequent core updates — 6–24 months |
+| Drop coincides exactly with a confirmed update (check the Search Status Dashboard; 2026 so far: Feb Discover core, Mar spam, Mar core, May core, Jun spam, Aug 18-20 spam — no core update since Jun 2 as of Sep 22, 2026, while tracker volatility ran hot) | Algorithmic | No reconsideration exists. Fix quality; recovery lands at subsequent core updates — 6–24 months, and core updates can be a quarter or more apart. A tracker spike without a dashboard entry is not an update |
 | Gradual decline over months | Decay/competition | Content refresh + gap analysis, not penalty response |
 | One template affected | Template-level thinness | Fix or noindex the template |
 

@@ -4,7 +4,7 @@ Actionable technical-SEO core for auditing and fixing any site: crawling/indexin
 
 ## Crawling and Crawl Budget
 
-Crawl budget = crawl rate limit (max requests/sec your server tolerates) x crawl demand (how much Google wants the content).
+Crawl budget = crawl rate limit (max requests/sec your server tolerates) x crawl demand (how much Google wants the content). Every site starts with the same default, conservative crawl capacity limit, and that limit is shared across all of Google's crawlers — budget is pooled, not per-bot (crawl-budget doc, Jul 22, 2026, now hosted at developers.google.com/crawling/docs/).
 
 | When crawl budget matters | When it doesn't |
 |---|---|
@@ -106,7 +106,7 @@ Use for: www/non-www, HTTP->HTTPS, trailing-slash variants, URL parameters, synd
 | Cross-domain canonical without proper setup | May be ignored |
 | Dynamic canonical from URL parameter | Circular references |
 
-**35% of audited sites** have errors in at least one of robots.txt/sitemaps/canonicals (Screaming Frog 2025); the most common failure is lack of coordination between the three systems — check them as one unit.
+**35% of audited sites** have errors in at least one of robots.txt/sitemaps/canonicals (attributed to a Screaming Frog 2025 dataset — unverified, directional); the most common failure is lack of coordination between the three systems — check them as one unit.
 
 ## Indexing Signals and Troubleshooting
 
@@ -120,7 +120,7 @@ Signal strength (priority order): `rel="canonical"` and 301 (strong directives) 
 | Paginated archives | canonical to page 1 or view-all |
 | URL parameters (sort/filter/session) | canonical |
 | Thin tag/author archives | noindex or consolidate |
-| Internal search results | noindex (crawlable) is the de-indexing mechanism; robots.txt block is the crawl-budget mechanism for paths never indexed. To remove already-indexed search URLs: noindex first, add the robots block only after they drop out — a robots-blocked noindex is never seen |
+| Internal search results | Blocking them is now a crawl-efficiency recommendation, not a Search Essentials guideline (Google removed the guideline in Jul 2026 and still recommends blocking — an internal search is an infinite crawl space). noindex (crawlable) is the de-indexing mechanism; robots.txt block is the crawl-budget mechanism for paths never indexed. To remove already-indexed search URLs: noindex first, add the robots block only after they drop out — a robots-blocked noindex is never seen |
 | Staging/dev environments | Password-protect or noindex + robots.txt — **classic trap: noindex left on after staging goes live; check first on any "site vanished" report** |
 
 ### GSC Page Indexing statuses
@@ -130,12 +130,12 @@ Signal strength (priority order): `rel="canonical"` and 301 (strong directives) 
 | Discovered — currently not indexed | Improve internal linking, submit in sitemap, request indexing |
 | Crawled — currently not indexed | Improve content quality/uniqueness (see below) |
 | Duplicate without user-selected canonical | Set explicit canonicals |
-| Duplicate, Google chose different canonical | Investigate why Google prefers the other URL |
+| Duplicate, Google chose different canonical | Investigate why Google prefers the other URL. After you fix the content behind a duplicate cluster, Google's re-evaluation takes up to two weeks (canonicalization doc, Jul 10, 2026) — a canonical report inside that window is ALREADY-FIXED lag, not a live defect |
 | Excluded by noindex tag | Remove noindex if page should rank |
 | Blocked by robots.txt | Update robots.txt if page should be crawled |
 | Not found (404) | Fix URL or redirect |
 
-"Crawled — not indexed" fixes: add substantial unique content (500+ words of genuine value); differentiate or consolidate near-duplicates; build authority; add E-E-A-T signals (author, credentials, citations); reduce programmatic scale / increase per-page uniqueness; audit site-wide quality. Context: Google's May 2025 quality review actively removed pages; the indexing quality threshold has permanently risen — mass-produced unedited AI content loses crawl priority.
+"Crawled — not indexed" fixes: add substantial unique content (500+ words of genuine value); differentiate or consolidate near-duplicates; build authority; add E-E-A-T signals (author, credentials, citations); reduce programmatic scale / increase per-page uniqueness; audit site-wide quality. Context: the indexing quality threshold has risen through 2025-2026 (practitioner observation; no single named Google event) — mass-produced unedited AI content loses crawl priority.
 
 ## HTTP Status Codes for SEO
 
@@ -173,15 +173,20 @@ the rendered HTML when resources are available. Rendering can be quick but is no
 depend on for public content; client-side-rendered apps that deliver empty initial HTML still risk
 delayed/incomplete indexing and weaker non-Google AI visibility.
 
-Two documented fetch/render mechanics that bite audits (Google crawler docs, 2026):
+Three documented fetch/render mechanics that bite audits (Google crawler docs, 2026):
 
-- Googlebot fetches/renders only the **first 2MB uncompressed** of an HTML resource (the cap
-  applies per-resource to JS/CSS too); past-cutoff bytes are silently dropped and the truncated
+- Googlebot fetches/renders only the **first 2MB uncompressed** of an HTML resource for Search (the
+  cap applies per-resource to JS/CSS too; PDFs get 64MB, and Google's general crawling
+  infrastructure defaults to 15MB — Mar 2026 crawler post); past-cutoff bytes are silently dropped and the truncated
   document is indexed as if complete. Keep meta, canonical, and JSON-LD before any large inlined
   state/JSON blob, never after.
-- WRS keeps its own **~30-day JS/CSS cache independent of HTTP caching headers** (and is
-  stateless between requests). A shipped JS/CSS fix may not show in rendered captures for weeks;
+- WRS keeps its own JS/CSS cache independent of HTTP caching headers, and is stateless between
+  requests (Google documents the aggressive caching; the often-quoted ~30-day figure is unsourced). A shipped JS/CSS fix may not show in rendered captures for weeks;
   treat that as cache lag, not a broken deploy.
+- Google's crawlers also send HEAD, OPTIONS, PUT, PATCH and DELETE (under ~1.5% of requests,
+  initiated by JavaScript during rendering — Gary Illyes, Aug 2026). A WAF or server rule that
+  rejects OPTIONS/PATCH on paths serving a JS app breaks rendering; restrict methods only on
+  endpoints kept out of the index.
 
 | Strategy | SEO friendliness | Use case |
 |---|---|---|
@@ -303,7 +308,7 @@ Font preload needs `crossorigin`: `<link rel="preload" as="font" type="font/woff
 
 ## Edge SEO
 
-Modify responses at CDN/edge (Cloudflare Workers, Vercel Edge, Lambda@Edge) without touching origin: dynamic 301 management, JSON-LD/hreflang injection, title A/B tests, bot-specific pre-rendered HTML, `X-Robots-Tag`/canonical via headers, edge-side rendering (TTFB reduction 60-80%, internal-benchmark figure), bot-request logging.
+Modify responses at CDN/edge (Cloudflare Workers, Vercel Edge, Lambda@Edge) without touching origin: dynamic 301 management, JSON-LD/hreflang injection, title A/B tests, bot-specific pre-rendered HTML (content-identical to what users get — Google calls dynamic rendering a workaround, not a recommendation, and any divergence is cloaking), `X-Robots-Tag`/canonical via headers, edge-side rendering (TTFB reduction 60-80%, internal-benchmark figure), bot-request logging.
 
 ## IndexNow and Instant Indexing
 
