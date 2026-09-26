@@ -1,5 +1,15 @@
 # Changelog — seo-optimization (public)
 
+## 1.3.1 — 2026-09-25
+
+Wording release: the audit workflow reads as plain intent. No doctrine change.
+
+- The three-lens audit (SKILL.md and `measurement-and-audit.md`) runs its lenses as parallel
+  read-only subagents, or inline when the site is small enough to reason about directly; the
+  lines about pinning or waiting on a model are gone.
+- Verify reads as the done condition, and a lens that misses its acceptance criteria gets a
+  re-run with the gap named.
+
 ## 1.3.0 — 2026-09-22
 
 Freshness release: the July → September 2026 delta (35 sourced findings, load-bearing items

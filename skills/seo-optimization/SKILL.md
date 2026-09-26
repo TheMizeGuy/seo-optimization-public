@@ -79,7 +79,7 @@ Worked example — one title through the gate:
 - FAILS: `Best Hiking Boots 2026 — Waterproof Hiking Boots, Trail Boots & Backpacking Footwear | TrailLab` — three query phrases spliced with "—/&": a keyword container; Google rewrites it, users don't click it.
 - PASSES: `Best Hiking Boots of 2026: 14 Pairs Trail-Tested | TrailLab` — one phrase the way a person says it, one concrete differentiator ("14 pairs trail-tested"), brand last, 58 chars.
 
-### Rationalizations — all of these mean STOP
+### Rationalizations and why they fail
 
 | Rationalization | Reality |
 |---|---|
@@ -135,12 +135,10 @@ measurable user/business purpose.
 deployed site, the proven full-audit shape is three parallel read-only agents that triangulate:
 SERP/competitor/intent + in-repo technical (file:line evidence) + deployed crawlability
 (rendered HTML, ~30 URLs, Googlebot UA). Never audit only the repo — audit what Google sees.
-Execution mode: dispatch the three lenses as read-only subagents on whatever model the session
-chooses; this skill pins no model. If the site is small enough to reason about directly, run the
-three lenses inline in the main context instead of dispatching separate agents; never block on a
-specific model. Keep each lens read-only, dispatched or inline. Per-lens deliverable shapes and
-acceptance criteria are specified in `reference/measurement-and-audit.md` — check results
-against them before synthesizing.
+The lenses run as parallel read-only subagents, or inline in the main context when the site is
+small enough to reason about directly; each stays read-only either way. Per-lens deliverable
+shapes and acceptance criteria are specified in `reference/measurement-and-audit.md` — check
+results against them before synthesizing.
 
 Minimum evidence floor before any recommendation, audit or not: (1) live SERP for 2-3 target
 queries, (2) rendered HTML of the key pages via Googlebot UA, (3) GSC 28-day data when
@@ -156,7 +154,7 @@ before title polish before schema hygiene. Do not spend equal effort on 1%-weigh
 **3. Implement through the naturalness gate.** Recipes above; depth per element in
 `reference/`. New public routes ship with sitemap entries in the same change.
 
-**4. Verify — do not claim done until each of these holds:**
+**4. Verify.** The work is done when each of these holds:
 
 - Rendered HTML fetched with a Googlebot UA (not view-source) shows the intended
   title/meta/canonical/robots/H1 and JSON-LD on every changed URL.

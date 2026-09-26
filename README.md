@@ -6,7 +6,7 @@ of September 2026, primary-sourced (Google Search Central, Search Status Dashboa
 crawler docs), and behaviorally tested against the failure mode that actually matters — capable
 models over-optimizing subtly, not crudely.
 
-**Version 1.3.0** · MIT · one skill, ten reference files, no dependencies
+**Version 1.3.1** · MIT · one skill, ten reference files, no dependencies
 
 ## Install
 

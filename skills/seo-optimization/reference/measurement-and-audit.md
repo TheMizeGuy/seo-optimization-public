@@ -286,9 +286,9 @@ Full audit of a DEPLOYED site = 3 parallel read-only research agents that triang
 2. **In-repo technical audit** — file:line evidence on every head-tag emission, JSON-LD, sitemap entry, robots section, internal-link source, content depth, bucketed FIX-now / FIX-later / DEFER / NOT-FIXABLE.
 3. **Deployed crawlability audit** — fetch rendered HTML for ~30 representative URLs with a Googlebot UA (plus any bot-bypass header the site requires), capture title/desc/canonical/robots/JSON-LD/H1/response headers, probe for UA divergence (cloaking risk).
 
-Execution mode: dispatch the three lenses as read-only subagents on whatever model the session chooses; this skill pins no model. If the site is small enough to reason about directly, run the three lenses inline in the main context rather than dispatching separate agents; never block on a specific model. Whether dispatched or run inline, all three lenses stay read-only.
+The lenses run as parallel read-only subagents, or inline in the main context when the site is small enough to reason about directly; all three stay read-only either way.
 
-Acceptance criteria — check each lens's result against these before synthesizing; a lens that misses its criteria gets one re-dispatch with the gap named, never a silent pass:
+Acceptance criteria — check each lens's result against these before synthesizing; a lens that misses its criteria gets one re-run with the gap named, never a silent pass:
 
 1. **SERP/competitor lens returns:** per-query table (query → intent → SERP page type → who ranks) for every target query checked; per-competitor comparison rows (title/meta/canonical/JSON-LD/word count/internal links) for the top 3-5; an explicit on-site vs off-site attribution statement (the ~70/30 honesty split, quantified for this site). Reject if it recommends on-page work without stating the off-site gap.
 2. **In-repo technical lens returns:** every finding carries file:line evidence and lands in exactly one bucket (FIX-now / FIX-later / DEFER / NOT-FIXABLE). Reject any finding asserted without a file:line citation.
