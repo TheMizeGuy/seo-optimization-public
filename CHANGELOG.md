@@ -1,5 +1,10 @@
 # Changelog — seo-optimization (public)
 
+## 1.3.2 — 2026-10-04
+
+Maintenance release: the skill text is unchanged. Version kept in step with the private
+source, whose 1.3.2 changed only internal source pointers that this mirror never carries.
+
 ## 1.3.1 — 2026-09-25
 
 Wording release: the audit workflow reads as plain intent. No doctrine change.
