@@ -281,7 +281,7 @@ The tactic table (naming consistency, first-mention definitions, co-occurrence, 
 
 ## 10. Superseded / do-not-repeat ledger
 
-| Old claim (Apr 2026 internal baseline unless noted) | Status as of Jul 2026 |
+| Old claim (Apr 2026 internal baseline unless noted) | Status as of Sep 2026 |
 |---|---|
 | AIO trigger rate ~58% of searches | **Superseded** — matches no mid-2026 tracker; honest range ~25% (Semrush/Conductor) to ~50% (BrightEdge / Google official, US, Feb 2026) |
 | AI Mode on Gemini 2.5, 180+ countries | **Superseded twice** — Gemini 3.5 Flash at I/O 2026 (May 19-20), then Gemini 3.7 Flash from Aug 13, 2026 (Search Engine Roundtable, Sep 2026 roundup). The model name is a moving detail; quote surface behavior, not the model |

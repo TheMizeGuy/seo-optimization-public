@@ -394,14 +394,15 @@ The honest answer for most "why aren't we on page 1" cases: ~70% off-site (brand
 
 ## Traffic-Drop Triage Runbook
 
-Ordered so cheap, decisive checks run first. Stop at the first confirmed cause, but remember
-causes stack — a core update and a technical regression can land the same week.
+Ordered so cheap, decisive checks run first. Causes stack: a core update and a technical
+regression can land the same week. So a confirmed cause ends the triage only when its timing and
+size account for the whole drop, and a rollout match at step 3 never skips step 4.
 
 | Step | Check | Confirms |
 |---|---|---|
 | 1. Is the drop real? | Compare GSC clicks vs GA4 organic sessions for the same window. Divergence points at measurement, not ranking: broken analytics tag, consent-banner change, GSC property/permission change, timezone or date-range mismatch | Tracking breakage |
 | 2. Manual action / security | GSC Manual Actions + Security Issues. Five minutes, and it changes everything downstream | Penalty → anti-patterns.md recovery path |
-| 3. Update timing | Drop date vs Search Status Dashboard rollouts. Inside a rollout: no panic edits; wait at least a full week after completion before comparing data | Algorithmic reassessment → framework below |
+| 3. Update timing | Drop date vs Search Status Dashboard rollouts. Inside a rollout: no panic edits; wait at least a full week after completion before comparing data. Repairing a technical regression found at step 4 is not a panic edit and is done at once | Algorithmic reassessment → framework below |
 | 4. Technical regression | Diff recent deploys against the classic traps (technical-seo.md): shipped noindex/robots block, canonical regression, 5xx spikes, lost redirects, sitemap breakage. Rendered-capture the top losing URLs with a Googlebot UA | Self-inflicted technical |
 | 5. SERP-shape shift | Stable positions but fewer clicks? Check whether AI Overviews arrived on your money queries, a feature you owned (snippet, image pack) vanished, or ads/shopping units expanded. Segment GSC by query and compare CTR at constant position | SERP layout change, not ranking loss |
 | 6. Seasonality / demand | Year-over-year same-period comparison (GSC holds 16 months; Trends for the topic). Compare clicks, not impressions/CTR/position, while the window crosses the Sep 2025 `num=100` removal or the May 2025-Apr 2026 logging error (GSC Limitations). A drop that recurs annually is demand, not ranking | Seasonal demand |
@@ -417,7 +418,7 @@ you already shipped past.
 
 ### During Rollout (Day 0-14)
 
-1. **Don't panic-edit.** Changes during rollout create noise.
+1. **Don't panic-edit.** Changes during rollout create noise. Repairing a live technical defect (a shipped noindex, a robots block, a canonical regression, 5xx errors) is not a panic edit: fix it at once, rollout or not.
 2. Monitor GSC impressions and clicks daily by template type.
 3. Compare affected vs unaffected page categories.
 4. Document which queries/pages moved.
@@ -466,7 +467,7 @@ you already shipped past.
 | Action | Expected Impact |
 |--------|----------------|
 | Fix broken internal links | Improved crawling, recovered link equity |
-| Add schema to existing pages | Rich snippet eligibility, CTR increase |
+| Mark up existing pages as the types they visibly are, where that markup is missing | Rich-result eligibility for those types; a CTR gain, not a ranking one |
 | Optimize title tags for CTR | 5-30% CTR improvement |
 | Answer real user questions with 40-60 word direct answers under question headings | Featured snippet + PAA eligibility (FAQ schema itself earns nothing since May 2026) |
 | Compress and convert images to WebP/AVIF | CWV improvement, faster loads |

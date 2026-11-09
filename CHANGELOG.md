@@ -1,5 +1,28 @@
 # Changelog — seo-optimization (public)
 
+## 1.3.3 — 2026-11-09
+
+Correctness release: rules that a close reader applies as written and gets wrong.
+
+- The risk preflight's "any yes" rule was inverted for two of its six rows (scaled content and
+  thin affiliation). Both questions are reworded so that "yes" names the risk in every row.
+- Verify has a path for checks a session cannot reach (an indexing request, a production check
+  that waits on the deploy, the Rich Results Test). It runs the rest, checks changed schema
+  against the practical minimums in `structured-data.md`, and hands the remainder to the owner
+  as a named list.
+- The traffic-drop runbook told the reader to stop at the first confirmed cause and, in the same
+  sentence, that causes stack. A cause ends triage only when its timing and size account for the
+  whole drop, and a rollout match never skips the technical-regression step.
+- The no-panic-edit rule says, in each of the three places it appears, that repairing a live
+  technical defect is not a panic edit and is done at once.
+- The 70/30 off-site and on-site split reads as a starting estimate that the audit's evidence
+  moves, which is what the audit lens already asked for.
+- The audit quick-wins table recommended adding schema for eligibility, the smell the
+  naturalness gate fails. It recommends marking pages up as the types they visibly are.
+- The passing title example gave 58 characters for a 59-character title. The count is corrected,
+  and two more examples of different shapes sit beside it so that no single shape gets copied.
+- The superseded-claims ledger header carries the date of its rows (Sep 2026).
+
 ## 1.3.2 — 2026-10-04
 
 Maintenance release: the skill text is unchanged. Version kept in step with the private

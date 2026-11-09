@@ -56,9 +56,9 @@ topical focus beats sprawl. **originality scoring**: don't rephrase competitors.
 with no SEO knowledge would flag it as odd, redundant, or list-like, it fails, regardless of
 which "signal" justifies it.
 
-Strong models don't fail this by crude stuffing. They fail it by *systematic mild
-over-optimization*: each choice defensible, the sum reading as SEO'd. Baseline testing produced
-exactly these patterns; the recipes below are the required shape.
+The failure this gate exists for is rarely crude stuffing. It is *systematic mild
+over-optimization*: each choice defensible, the sum reading as SEO'd. The recipes below are the
+required shape.
 
 ### What natural elements ARE
 
@@ -74,10 +74,12 @@ exactly these patterns; the recipes below are the required shape.
 | Schema | Marks up what the page visibly IS, real data only | Types added for eligibility; markup diverging from visible content (manual-action category) |
 | FAQ | Questions users genuinely ask, answered plainly | Q&A written as "mini landing targets" for PAA capture |
 
-Worked example — one title through the gate:
+Worked examples, illustrative: the shape changes with the page, the gate does not.
 
 - FAILS: `Best Hiking Boots 2026 — Waterproof Hiking Boots, Trail Boots & Backpacking Footwear | TrailLab` — three query phrases spliced with "—/&": a keyword container; Google rewrites it, users don't click it.
-- PASSES: `Best Hiking Boots of 2026: 14 Pairs Trail-Tested | TrailLab` — one phrase the way a person says it, one concrete differentiator ("14 pairs trail-tested"), brand last, 58 chars.
+- PASSES (roundup): `Best Hiking Boots of 2026: 14 Pairs Trail-Tested | TrailLab` — one phrase the way a person says it, one concrete differentiator ("14 pairs trail-tested"), brand last, 59 chars.
+- PASSES (local service): `Emergency Plumber in Austin: 45-Minute Arrival | PipeWorks` — 58 chars.
+- PASSES (how-to): `How to Repot a Monstera Without Root Shock | Fernwise` — 53 chars.
 
 ### Rationalizations and why they fail
 
@@ -120,11 +122,11 @@ roundups", "expired domains", or "parasite/reputation leverage", classify it bef
 
 | Risk | The question that decides it |
 |---|---|
-| Scaled content / impression farming | Would these pages exist if they could not earn impressions? |
+| Scaled content / impression farming | Do these pages exist only because they could earn impressions? |
 | AI-response manipulation | Is the page meant to manipulate AI answers rather than help a user complete a task? |
 | Doorway/cannibalization | Are variants targeting the same intent with thin substitutions? |
 | Site reputation abuse | Is third-party or weakly owned content using the host's authority more than its own value? Google's Aug 28, 2026 policy rewrite judges it on four factors: presentation relative to the host, quality relative to the main domain, stated or implied authorship, and near-identical reuse across other sites |
-| Thin affiliation | Is there first-hand testing, comparison, pricing/context, or decision help beyond merchant copy? |
+| Thin affiliation | Is the page merchant copy with no first-hand testing, comparison, pricing/context, or decision help added? |
 | Expired-domain abuse | Is authority being borrowed from an unrelated prior domain purpose? |
 
 Any "yes" moves the work to `reference/anti-patterns.md` before implementation. The compliant
@@ -165,14 +167,25 @@ before title polish before schema hygiene. Do not spend equal effort on 1%-weigh
 - The red-flags self-check (above) re-run against the final diff comes back clean.
 - Post-deploy: rendered-HTML check repeated on production, not assumed from staging.
 
+Some of these need access the session may not have: the indexing request is made in the
+owner's Search Console, the production check needs the deploy, and the Rich Results Test needs a
+browser. Run every check the session can reach and report its actual output. Where the Rich
+Results Test is out of reach, check each changed block against the practical minimums in
+`reference/structured-data.md` and say the test itself is still owed. Hand the checks that could
+not be run to the owner as a list (URL, check, expected result) and state plainly that they are
+outstanding. A check out of reach is handed off: it is never skipped silently, and never a
+reason to stop before the other checks are run.
+
 ## The honesty rule
 
 Most "why aren't we on page 1" cases decompose to roughly **70% off-site** (brand authority,
 backlinks, ecosystem presence) **+ 30% content keyword leadership**; technical SEO is usually
-already adequate (proven in production, 2026-05). State this split in every diagnosis instead of
-inventing on-site work to look busy. Set honest timelines: algorithmic recovery 6–24 months,
-authority building 6–12 months, content clusters 3–6 months to +40% traffic. A deliverable that
-promises head-term rankings from on-page tweaks alone is wrong.
+already adequate (proven in production, 2026-05). Treat the 70/30 figure as the starting
+estimate: state the on-site/off-site split for this site in every diagnosis, moved to wherever
+the audit's evidence puts it, instead of inventing on-site work to look busy. Set honest
+timelines: algorithmic recovery 6–24 months, authority building 6–12 months, content clusters
+3–6 months to +40% traffic. A deliverable that promises head-term rankings from on-page tweaks
+alone is wrong.
 
 The split is a diagnosis of HEAD-term gaps, never a reason to skip non-branded demand capture:
 authority sets the ceiling, query coverage fills everything under it, and mid/long-tail function

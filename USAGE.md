@@ -38,7 +38,9 @@ Every engagement follows the same spine:
    boilerplate keyword edits all fail the gate regardless of which "signal" justifies them.
 5. **Verification before "done"**: rendered production capture with a Googlebot UA, Rich
    Results Test on changed schema, sitemap entries shipped in the same change, a red-flags
-   self-check on the final diff.
+   self-check on the final diff. Checks the session cannot run (an indexing request, a
+   production check that waits on the deploy) are handed to the owner as a named list, never
+   skipped silently.
 6. **Honest diagnosis**: most "why aren't we page 1" cases are majority off-site authority.
    The skill states the split and realistic timelines instead of selling on-page busywork —
    and then works the winnable non-branded middle anyway.

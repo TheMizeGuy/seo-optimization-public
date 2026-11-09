@@ -48,8 +48,8 @@ a formal channel — borderline tactics carry more downside than before.
 ## Tier 2 — the subtle class (the 2026 failure mode)
 
 None of these violate a written policy. All of them degrade engagement signals, invite title
-rewrites, and compound into algorithmic demotion. Every one was produced by a capable,
-well-intentioned agent in baseline testing (2026-07-01) — these are the defaults to unlearn.
+rewrites, and compound into algorithmic demotion. Each looks defensible on its own, which is why
+careful, well-intentioned work still produces them.
 
 | Anti-pattern | What it looks like | Why it backfires |
 |---|---|---|
@@ -108,7 +108,8 @@ Run these against any page you just optimized:
 Recovery sequence for algorithmic hits: triage (confirm timing vs rollout) → remove/noindex thin
 and parasitic content → rebuild E-E-A-T and depth → sustain; the Helpful Content classifier
 operates site-level, so one bad section drags everything, and it re-evaluates over months, not
-days. Never panic-edit mid-rollout.
+days. Never panic-edit mid-rollout; repairing a live technical defect is not a panic edit and is
+done at once.
 
 ## The disposition
 
